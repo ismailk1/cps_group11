@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servo Test</title>
+<style>
+  body {
+    margin: 0; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: #f2f3f5; color: #1d1f24;
+  }
+  .panel {
+    background: #fff; border-radius: 20px; padding: 32px;
+    box-shadow: 0 6px 24px rgba(0,0,0,.07);
+    text-align: center; width: 440px;
+  }
+  h1 { margin: 0 0 20px; font-size: 22px; font-weight: 600; }
+  #connect {
+    width: 100%; padding: 14px; border: none; border-radius: 12px;
+    background: #2f6fed; color: #fff; font-size: 16px; cursor: pointer;
+  }
+  #connect.on { background: #e8f6ee; color: #1f9d55; cursor: default; }
+  .grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    margin: 24px 0 8px;
+  }
+  .group-label { font-size: 12px; color: #8a8f99; grid-column: span 1; }
+  .servo {
+    aspect-ratio: 1; border: none; border-radius: 14px;
+    background: #f2f3f5; font-size: 18px; font-weight: 600; color: #1d1f24;
+    cursor: pointer; transition: background .15s, transform .1s;
+  }
+  .servo:hover:not(:disabled) { background: #e3eafc; }
+  .servo:active:not(:disabled) { transform: scale(.95); }
+  .servo:disabled { opacity: .4; cursor: not-allowed; }
+  .servo.moving { background: #ffd666; }
+  #msg {
+    display: inline-block; margin-top: 16px; padding: 6px 14px;
+    border-radius: 999px; background: #f2f3f5; color: #6b7180; font-size: 13px;
+  }
+</style>
+</head>
+<body>
+  <div class="panel">
+    <h1>Servo Test</h1>
+    <button id="connect">Connect Serial Port</button>
+    <div class="grid" id="grid"></div>
+    <div id="msg">Not connected</div>
+  </div>
+
+<script>
+// Pairs, in order: D11+D12, D4+D3, D8+D7, D6+D5
+const PINS = [11, 12, 4, 3, 8, 7, 6, 5];
+const grid = document.getElementById('grid');
+const buttons = [];
+let writer;
+
+// Labels row, then two rows of buttons: top = first of each pair, bottom = second
+for (let g = 0; g < 4; g++) {
+  const l = document.createElement('div');
+  l.className = 'group-label';
+  l.textContent = 'Group ' + (g + 1);
+  grid.appendChild(l);
+}
+for (const row of [0, 1]) {
+  for (let g = 0; g < 4; g++) {
+    const i = g * 2 + row;
+    const b = document.createElement('button');
+    b.className = 'servo';
+    b.textContent = 'D' + PINS[i];
+    b.disabled = true;
+    b.onclick = () => {
+      if (!writer) return;
+      buttons.forEach(x => x.classList.remove('moving'));
+      b.classList.add('moving');
+      writer.write(new TextEncoder().encode(String(i)));
+    };
+    buttons.push(b);
+    grid.appendChild(b);
+  }
+}
+
+document.getElementById('connect').onclick = async (e) => {
+  if (writer) return;
+  if (!('serial' in navigator)) return msg('Please open this page in Chrome or Edge');
+  let port;
+  try {
+    port = await navigator.serial.requestPort();
+    await port.open({ baudRate: 9600 });
+    writer = port.writable.getWriter();
+  } catch (err) {
+    return msg('Connection failed');
+  }
+  e.target.textContent = 'Connected';
+  e.target.classList.add('on');
+  buttons.forEach(b => b.disabled = false);
+  msg('Waiting for board…');
+
+  const reader = port.readable.pipeThrough(new TextDecoderStream()).getReader();
+  let buf = '';
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    buf += value;
+    let n;
+    while ((n = buf.indexOf('\n')) >= 0) {
+      const line = buf.slice(0, n).trim();
+      buf = buf.slice(n + 1);
+      if (line === 'READY') msg('Ready');
+      else if (line === 'OK') { msg('Done'); buttons.forEach(x => x.classList.remove('moving')); }
+      else if (line) msg('Moving ' + line);
+    }
+  }
+};
+
+function msg(t) { document.getElementById('msg').textContent = t; }
+</script>
+</body>
+</html>
