@@ -1,285 +1,263 @@
 # SPECIMEN51: Cyberphysical Systems
 
-IDE Cyber Physical Systems, Group 11  
-Team Members: _(add names)_
+IDE Cyber Physical Systems, Group 11
 
 ![SPECIMEN51 on its display stand](images/photos/pic_1.jpg)
 
 # Overview
 
-<!-- TODO (team): one or two sentences in your own words on where the idea came from. -->
+SPECIMEN51 is a soft jellyfish robot. Four tentacles hang from a round black body, and on top there is a clear hood that folds open and shut like the hood of a pram. While the hood is open, you wind a piece of red yarn around the pegs on the white disc to make a shape. A webcam above the robot looks at the shape and Wekinator decides which of our five shapes it is. Then the hood closes and the tentacles do the dance that belongs to that shape. After the dance the hood opens again and the next person can wind something new.
 
-SPECIMEN51 is a soft robot shaped like a jellyfish. Four soft tentacles hang under a round black body, and a clear film hood on top folds open and closed like the hood of a baby stroller. While the hood is open, a visitor winds red yarn round the pegs on the white disc to make a shape. A camera above recognises the shape, the hood closes, and the tentacles play the dance that belongs to that shape.
+We wanted an input that you make with your hands. The yarn stays on the disc, so the camera can look at it for as long as the hood is open, and it takes only a few seconds to wind a new shape or change an old one. Red yarn on a white disc also gives the camera a strong contrast to work with.
 
 ![Instruction manual: the five shapes and their dances](images/Instruction%20Manual%20.png)
 
-| | |
+The instruction manual shows the five shapes (MODE_1 to MODE_5) and the dance each one triggers. MODE_0 is the rest pose with all tentacles straight.
+
+| Square on the pegs | Triangle under the open hood |
 | --- | --- |
 | ![Square shape on the pegs](images/photos/pic_3.jpg) | ![Triangle shape under the open hood](images/photos/pic_8.jpg) |
 
-The whole exhibit is about 66 cm high and 53 cm wide at the feet. The robot body is Ø225 mm and hangs 23 cm above a Ø388 mm clear acrylic deck. A webcam on a mast at the back looks down on the disc from about 40–50 cm above the deck.
+One round takes 45 seconds and then repeats: the hood is open for 25 s, the robot rests for 5 s, and the dance lasts 15 s. The shape is read 2 s before the hood starts to close, so a shape you finish while the hood is open gets its dance about 10 s later.
 
-We kept the look plain so that the tentacles and the hood get the attention: black PLA, clear acrylic, a white disc and red yarn. The display stand is built like a small operating table, with splayed legs and a triangle-truss mast.
+The display stand is based on an operating table, with splayed legs and a truss mast for the camera, so the jellyfish sits on it like a specimen being examined. The robot is printed in black PLA, and the stand and hood are clear acrylic and film, so the black body and tentacles stand out. Set up, the exhibit is about 66 cm tall and 53 cm wide at the feet, and the robot body hangs 23 cm above the deck.
 
-| | |
+| Running the software next to the exhibit | Front view with the hood open |
 | --- | --- |
 | ![Running the software next to the exhibit](images/photos/pic_4.jpg) | ![Front view with the hood open](images/photos/pic_9.jpg) |
 
 # Design
 
-The plastic parts are printed on a Bambu P1S or laser-cut. The rest is bought (steel wire, acrylic rod, film, yarn, fishing line), and everything is put together with M3/M4 screws. The four tentacle modules are identical, so a broken one can be swapped.
+## From the robot arm to tentacles
 
-## Assembly Drawings
+The brief starts from the course robot arm. We kept the control chain we had built for the arm exercise (camera, Wekinator, Processing, Arduino, servos), but a jellyfish does not move like a rigid arm, so we built a new mechanism instead of modifying the arm. The arm moves four servos, one per joint, to fixed positions. SPECIMEN51 has nine servos: two for each tentacle and one for the hood. Each tentacle bends along its whole length and in any direction, so the dances can be waves and circles instead of poses.
 
-The whole exhibit goes together in 15 steps: the stand in steps 1–5, the robot in steps 6–9, the jellyfish top in steps 10–14, and step 15 sets the camera height. New parts in each step are grey. Part codes: A = acrylic, P = printed stand parts, R = robot, T = top. All four sheets are also in one PDF: [TentacleJellyfish_WholeExhibit_15steps.pdf](images/assembly/TentacleJellyfish_WholeExhibit_15steps.pdf).
+## Assembly drawings
 
-![Exploded view](images/assembly/0_exploded_axo.png)
-![Parts and hardware](images/assembly/1_parts.png)
-![Assembly steps 1–8](images/assembly/2_assembly_1-8.png)
-![Assembly steps 9–15](images/assembly/3_assembly_9-15.png)
+We drew the whole exhibit as 15 assembly steps on four sheets. Steps 1-5 are the display stand, 6-9 the robot, 10-14 the hood, and step 15 sets the camera height. On the parts list, A is acrylic, P a printed stand part, R a robot part and T a part of the top. All four sheets are also in one PDF: [SPECIMEN51_assembly.pdf](images/assembly/SPECIMEN51_assembly.pdf).
 
-## Files to Print and Cut
+![Exploded view](images/assembly/exploded.png)
+![Parts and hardware](images/assembly/parts.png)
+![Assembly steps 1-8](images/assembly/assembly_1-8.png)
+![Assembly steps 9-15](images/assembly/assembly_9-15.png)
 
-| Part | File in `cad/` |
+## Files to print and cut
+
+The `cad/` folder has the lid parts we modelled in Onshape:
+
+| Part | File |
 | --- | --- |
-| Lid ring (Ø224) | `super ring.stl` |
-| Lid servo cover (half) | `servo cover half.stl` |
-| Wire holder on the lid servo horn | `servo horn wire holder v2.stl` |
-| Lid servo rail (laser-cut) | `servo attachment rail.dxf` |
-| Lid and motor, full assembly | `lid motor assembly.step` |
+| Lid ring, 224 mm | [super ring.stl](cad/super%20ring.stl) |
+| Lid servo cover (half) | [servo cover half.stl](cad/servo%20cover%20half.stl) |
+| Wire holder on the lid servo horn | [servo horn wire holder v2.stl](cad/servo%20horn%20wire%20holder%20v2.stl) |
+| Lid servo rail, laser-cut | [servo attachment rail.dxf](cad/servo%20attachment%20rail.dxf) |
+| Lid and servo, whole assembly | [lid motor assembly.step](cad/lid%20motor%20assembly.step) |
 
-_(add the print and laser-cut files for the tentacles, stands, chassis and display stand)_
-
-Print settings: PLA 0.2 mm, 3 walls, 15 % infill, no supports. TPU: dry the filament, print slowly (at most 2–2.5 mm³/s), 4 walls, 100 % infill, lying flat.
+Print settings: PLA at 0.2 mm layers, 3 walls, 15% infill, no supports. The tentacle spines are TPU 90A: dry the filament first, print slowly (max 2-2.5 mm3/s), 4 walls, 100% infill, lying flat.
 
 # Mechanisms
 
-## Tentacle
+## Tentacles
 
-Each tentacle is driven by four lines (tendons) and two servos.
+![Single tentacle test rig next to the robot](images/photos/pic_6.jpg)
 
-![Two-axis tentacle module](images/drawings/02_two_axis_module.png)
+We built and tested one tentacle on its own stand (right in the photo) before making the other three.
 
-- **Soft spine:** TPU 90A, about 150 mm of bending length, an octagon 7 mm across at the root and 5 mm at the tip. Thin ring slits between the ribs make it soft enough to bend.
-- **Ribs:** 15 rigid discs, Ø26 mm at the root to Ø20 mm at the tip, 10 mm apart. Each has four line holes on a cross.
-- **Lines:** four fishing lines (up, down, left, right). They run through the rib holes and are clamped at the tip by a small tip head with one M3 × 6 screw.
-- **Pulleys:** one pulley (12 mm groove radius) on each servo horn. One servo pulls the left and right lines, the other the up and down lines: one line shortens while the other lengthens, so the tentacle bends. Moving both servos bends it in any direction.
+Each tentacle is a soft TPU spine with 15 hard ribs on it, 10 mm apart, getting smaller towards the tip (26 mm across at the root, 20 mm at the tip). Four fishing lines run through holes in the ribs at the top, bottom, left and right, and are clamped together at the tip with a small M3 screw. At the root, the left and right lines go round a pulley on one servo, and the up and down lines round a pulley on the other. When a servo turns, one line gets shorter and the opposite one gets longer, so the tentacle curls towards the short side. With both servos moving together the tentacle can bend in any direction, which is how the relay dance draws circles.
 
-| | |
-| --- | --- |
-| ![Tentacle module](images/drawings/03_tentacle_module.png) | ![A tentacle on the robot](images/photos/pic_7.jpg) |
+![One tentacle on the robot](images/photos/pic_7.jpg)
 
-## Body and Support Structure
+Getting the spine soft enough took four iterations. Iteration 1 was solid TPU and hardly bent. Iteration 2 kept the same outside but had closed hollow chambers inside, and it was still too stiff. Iteration 3 has thin ring slits between the ribs that leave only a round core in the middle, and this is the one we use. Iteration 4 has an even thinner core, as a softer option.
 
-| | |
-| --- | --- |
-| ![Robot on the support](images/drawings/10_robot_on_support.png) | ![Display stand](images/drawings/09_display_stand.png) |
+![Spine iterations 1 to 4](images/drawings/spine_iterations.png)
 
-- **Stands:** four printed stands hang under the body. Each holds its two servos and points its tentacle 30° down.
-- **Chassis:** a printed Ø225 mm plate with a lip, M3 holes on a 10 mm grid, and cable holes. The lid sits on a 3 mm ledge inside the lip. One handle at the side sits under the lid servo's cover.
-- **Robot support:** a thin perforated tube (P14) holds the robot in the air in the middle of the deck, so the tentacles can move freely. A cap (P15) and one M4 × 30 **button head** screw lock it. A socket head would touch the lid.
-- **Display stand:** a Ø388 mm deck of two 3 mm clear acrylic sheets on three splayed legs. A mast carries a sliding arm with the webcam. The arm slides from 250 to 500 mm above the deck. Set the lens to 390–500 mm: below 390 mm the closed hood blocks the camera.
+The pulleys changed a few times as well. Our MG90S horns have a raised hub, so the first pulley would not sit on them and we remodelled its pocket around the horn. Some servos came with flat horns, so there is a flat version too. After that the tentacle still stopped short of a full bend when the servo reached its end, so we made the groove bigger (radius 10 mm to 12 mm) to pull more line per degree. Knots in the clear fishing line kept slipping, so the line ends are held with small printed beads: the line goes through a tapered hole and a short piece of 1.75 mm filament is pushed in after it as a wedge.
 
-![Webcam on the arm](images/photos/pic_2.jpg)
+## Body and support
 
-## Jellyfish Top
+The four tentacle stands are screwed under a printed chassis 225 mm across. Each stand holds its two servos and points its tentacle 30 degrees down. The chassis has a grid of M3 holes, which let us move parts around while building, and holes for the cables. The robot sits on a thin printed tube in the middle of the deck (P14), held by a cap (P15) and one M4x30 screw. It has to be a button head screw, because a socket head touches the lid.
 
-![Open and closed hood](images/drawings/12_lid_open_closed.png)
+The display stand is two 3 mm clear acrylic discs (388 mm) on three splayed legs with printed joints. A mast at the back carries a sliding arm for the webcam, which can be set from 250 to 500 mm above the deck. Below about 390 mm the closed hood gets in the camera's way, so we keep it higher than that.
 
-- **Lid:** the lid ring with the lid servo and its quarter-sphere cover. It sits on the chassis.
-- **Winding disc and pegs:** a white disc with eight clear acrylic pegs on one ring. The visitor winds the red yarn round the pegs.
-- **Four wires:** Ø1.1 mm steel wires, each bent into a half circle (R 115, 117, 119 and 121 mm), all turning about the same hinge axis across the lid. Wire 1 is fixed flat at the back. Wires 2 and 3 can turn freely and are moved only by the film. Wire 4 (the outermost) is hooked into the servo horn. On the side opposite the servo, all four wires hook round a short steel bar (a twisted piece of steel wire) that sticks out of the lid edge.
-- **Film:** a clear film (about 380 × 410 mm) taped along all four wires. When the servo turns wire 4 from back to front, it pulls wires 2 and 3 along and the film unfolds into a closed hood.
+![Webcam on the sliding arm](images/photos/pic_2.jpg)
 
-| | |
-| --- | --- |
-| ![Four wires](images/drawings/14_four_wires.png) | ![Servo end (detail A)](images/drawings/13_servo_end_detail_A.png) |
+## Hood
+
+![Onshape model of the lid, servo cover and outer wire](images/cad_servo_mount.png)
+
+The lid ring, the cover for the lid servo and the rail it sits on are our own Onshape parts (see `cad/`). On top of the lid is a white disc with eight clear acrylic pegs for the yarn.
+
+The hood is made of four 1.1 mm steel wires, each bent into a half circle of a slightly different size (radius 115, 117, 119 and 121 mm), all turning about the same axis across the lid. The smallest one is fixed lying flat at the back, the two middle ones are loose, and the biggest one is attached to the lid servo horn. On the far side, the wire ends hook round a short twisted piece of steel wire sticking out of the lid. A clear film is fixed along all four wires. When the servo swings the outer wire forward, the film pulls the two loose wires along and unfolds into a closed dome.
+
+![Hood open (servo at 160) and closed (servo at 10)](images/drawings/lid_open_closed.png)
 
 ![Closed hood](images/photos/pic_10.jpg)
+
+# Electronics
+
+# Wekinator
+
+## Input
+
+The input is the yarn shape on the disc, seen from above by the webcam. `camera_to_wekinator.pde` cuts a circle out of the middle of the camera image that just covers the disc and turns everything outside it black, so hands and people walking past do not change the input. It then samples a 44x44 grid of brightness values (1936 inputs, from 0 to 1) and sends them to Wekinator every third frame. For the robot arm we had sent the full 80x80 image (6400 values). Cutting it down to the disc means Wekinator only sees what matters.
+
+## Output
+
+One classifier output with five classes, one for each shape. We used a classifier rather than continuous outputs because each shape should start one whole dance, not a mix of two.
+
+| Class | Shape | Dance |
+| --- | --- | --- |
+| 1 | Triangle | Up/down wave: each tentacle rises and falls a quarter beat after the one before, so a wave runs round the body |
+| 2 | Square | The same wave, but left and right |
+| 3 | Circle | Diagonal twitch: two opposite tentacles twitch quickly, and every 2 s the other pair takes over |
+| 4 | Long thin loop | Cross-step: one pair sways left and right in mirror while the other pair nods up and down, with a bigger nod every other bar |
+| 5 | Half circle | Relay: one tentacle at a time swings round in a circle, then hands over to the next one |
+
+## Training and running the model
+
+1. Start `camera_to_wekinator.pde` and check that the disc fills the round image.
+2. In Wekinator, create a project with 1936 inputs on port 6448 (`/wek/inputs`) and one classifier output with 5 classes, sent to port 12000 (`/wek/outputs`). The settings we used are in `Wekinator/` (`CPS_Wekinator.wekproj`, `inputConfig.xml`, `outputConfig.xml`).
+3. Wind the first shape, set the output to class 1 and record examples. Move the yarn a little and wind it again between recordings, so the model sees the same shape in slightly different positions.
+4. Do the same for classes 2 to 5, then train.
+5. Press Run. The predicted class goes to `osc_to_arduino.pde` and from there to the Arduino.
+
+The trained model is not in the repository, only the project settings, so it has to be trained again on a new computer or under different light.
+
+## Improving the model
+
+With more time and resources, the first thing we would add is more varied training data: each shape wound by different people, at different sizes and positions on the pegs, and under the light of every room we show in. We would also record an empty disc and half-finished shapes as a class of their own. At the moment there are only five classes, so an empty disc is always read as one of the shapes. More data would help most with shapes made by people we have never trained on. With a bigger dataset we could also compare Wekinator's classifiers (k-nearest neighbour, decision tree, SVM, neural network) on the same recordings, or train a small convolutional network on the images, which copes better with shifted or rotated shapes.
+
+Some limits would stay. The camera sees only brightness from one angle, so shapes that look alike from above, such as a circle and a rounded square, will always be close. Light changes the raw values, so every new place needs some retraining or a fixed lamp. And because the robot reacts once per round, a better model does not make it react faster.
 
 # Processing
 
 ```mermaid
 flowchart LR
-    cam["Webcam"] --> video["camera_to_wekinator.pde<br/>44 × 44 = 1936 inputs"]
-    video -->|"OSC 6448 /wek/inputs"| wek["Wekinator<br/>5 classes"]
-    wek -->|"OSC 12000 /wek/outputs"| osc["osc_to_arduino.pde"]
-    osc -->|"serial 115200, C1 to C5"| ard["tentacle_show.ino"]
-    ard -->|"ACK n"| osc
-    ard --> out["8 tentacle servos, lid servo, LEDs"]
+    A[Webcam] --> B[camera_to_wekinator.pde]
+    B -- "OSC 6448, 1936 values" --> C[Wekinator]
+    C -- "OSC 12000, class 1-5" --> D[osc_to_arduino.pde]
+    D -- "serial 115200, C1 to C5" --> E[tentacle_show.ino]
+    E -- "ACK" --> D
+    E --> F[8 tentacle servos, lid servo, LEDs]
 ```
 
-Two Processing programs connect the camera, Wekinator and the Arduino, in the same way as our course robot arm project.
+Two Processing sketches sit between the camera, Wekinator and the Arduino, and one Arduino sketch runs the whole robot. They grew out of the code we used for the robot arm (the course video example by Rebecca Fiebrink and Becky Stewart's OSC to Arduino example). The main changes:
+
+| | Robot arm | SPECIMEN51 |
+| --- | --- | --- |
+| Camera input | 80x80 = 6400 brightness values from a 640x480 image | 44x44 = 1936 values from a circle in the middle of a 1280x720 image, every 3rd frame |
+| Wekinator to Arduino | One byte when the class changes, 9600 baud | A text line such as `C3` at 115200 baud, sent only after the class has stayed the same for 200 ms, repeated every second, and confirmed by the Arduino with `ACK 3` |
+| Arduino | Four arm servos moved with switch cases and for loops | 8 tentacle servos, the lid servo and 8 LEDs in a 45 s loop of lid, rest and dance phases; the dances are sine waves |
 
 ## `Processing_camera/camera_to_wekinator.pde`
 
-- Opens the external webcam at 1280 × 720 through a GStreamer pipeline (`avfvideosrc`, which works on macOS).
-- Crops the middle square of the image and keeps only the circle inside it, so people and hands around the robot do not change the result.
-- Samples a 44 × 44 grid and sends the brightness of each point (0 to 1, black outside the circle), 1936 values in total, to Wekinator on port 6448 every 3rd frame.
-- The window shows the round camera image, the 44 × 44 feature map and how many frames were sent. Its class box stays at "WAITING FOR WEKINATOR" for now (see Next steps); the class is shown in `osc_to_arduino` instead.
+Opens the webcam at 1280x720, cuts out the round middle part and sends the 44x44 brightness grid to Wekinator on port 6448. The window shows the round camera image, the 44x44 grid that Wekinator receives, and how many frames have been sent. The camera is opened through GStreamer with `avfvideosrc`, which only works on macOS. The class box in this window stays at "WAITING FOR WEKINATOR", because nothing sends to its port (12001) yet. The class is shown in `osc_to_arduino` instead.
 
 ## `Processing_osc_to_arduino/osc_to_arduino.pde`
 
-- Listens for `/wek/outputs` on port 12000 and rounds the value to a class from 1 to 5.
-- A class must stay the same for 200 ms before it is sent, so a flickering prediction is ignored.
-- Sends the class to the Arduino as a line of text (`C3`) at 115200 baud: once when it changes, then again every second in case the Arduino restarts.
-- The Arduino answers `ACK 3`. The window has four boxes: what Wekinator sends, the stable class, the class sent, and the class the Arduino confirmed. This makes it easy to see where the chain stops.
-- Finds the Arduino port by name (`PORT_HINT = "usbmodem"` on a Mac; on Windows use e.g. `"COM3"`) and reconnects by itself.
+Listens for `/wek/outputs` on port 12000 and rounds the value to a class from 1 to 5. A class has to stay the same for 200 ms before it is sent, so a prediction that flickers for a frame is ignored. It sends the class as a line of text (`C3`) when it changes, and again every second in case the Arduino has restarted. The Arduino answers `ACK 3`. The four boxes in the window show what Wekinator sends, the stable class, the class that was sent, and the class the Arduino confirmed. The sketch finds the Arduino by part of the port name (`PORT_HINT = "usbmodem"` on a Mac; on Windows use something like `"COM3"`) and reconnects by itself if the cable is pulled out.
 
 ## `arduino/tentacle_show.ino`
 
-The Arduino repeats three phases:
+The Arduino goes round three phases:
 
-| Phase | Time | What happens |
+| Phase | Length | What happens |
 | --- | --- | --- |
-| 0 Lid | 25 s | The lid opens in 3 s and stays open while a visitor winds or changes the shape. 2 s before the lid starts to close, the Arduino picks the latest class. The lid then closes in 3 s. |
-| 1 Rest | 5 s | All tentacles straight, lid closed. |
-| 2 Dance | 15 s | The tentacles play the dance for the picked class. |
+| 0 Lid | 25 s | The hood opens over 3 s and stays open so a shape can be wound. 2 s before it starts closing, the Arduino takes the latest class. Then the hood closes over 3 s. |
+| 1 Rest | 5 s | All tentacles straight, hood closed. |
+| 2 Dance | 15 s | The dance for the class taken in phase 0. |
 
-Each phase change starts a short blue light wave along the LED strip. A class that arrives after the pick waits for the next round, so the closing lid cannot change the result. The Arduino also accepts a single digit (`3`) typed in the Serial Monitor (115200 baud, line ending "Newline"), which is useful for testing without Wekinator.
+Each phase change sends a short blue light along the LED strip. A class that arrives after it has been taken waits for the next round, so the closing hood cannot change the dance. Over serial the Arduino prints `READY` at start, `phase:n` at each phase change, `animation:n` when it takes the class, `class:n` when a new class comes in, and `ACK n` for every message. It also accepts a single digit typed into the Serial Monitor, which is handy for testing without Wekinator.
 
-`arduino/tentacle_animations_new_copy_20261111020022.ino` is an earlier version (9600 baud, lid servo on D10, no separate lid and rest times).
+Only this sketch is needed to run the project. `arduino/tentacle_animations_new_copy_20261111020022.ino` is an earlier version that we kept for reference: every phase in it lasts 1 s, the class is used the moment it arrives, the lid is on D10 and it talks at 9600 baud, so it does not work with `osc_to_arduino`.
 
-## Instructions for How to Run
+## How to run (macOS)
 
-Libraries: Processing **Video** (with GStreamer) and **oscP5**; Arduino **Servo** and **Adafruit NeoPixel**.
+1. Install Processing 4 with the Video library (GStreamer) and oscP5, and in the Arduino IDE the Servo and Adafruit NeoPixel libraries. The board is an Arduino Nano Every, which needs the "Arduino megaAVR Boards" package.
+2. Open `arduino/tentacle_show.ino`. The Arduino IDE asks to move it into a folder of its own; say yes. Upload it and close the Serial Monitor.
+3. Run `Processing_osc_to_arduino/osc_to_arduino.pde`. The "Sent" box should say "serial OK". If it doesn't, change `PORT_HINT` to your Arduino port.
+4. Run `Processing_camera/camera_to_wekinator.pde` and check that the yarn shape is inside the round image.
+5. Open `Wekinator/CPS_Wekinator.wekproj`, train it (see above) and press Run.
+6. When the "Arduino" box in `osc_to_arduino` says "confirmed", the class has reached the robot.
 
-1. Upload `arduino/tentacle_show.ino` and close the Serial Monitor.
-2. Run `Processing_osc_to_arduino/osc_to_arduino.pde`. Check that the "Sent" box says "serial OK". If not, set `PORT_HINT` to your Arduino port.
-3. Run `Processing_camera/camera_to_wekinator.pde`. The yarn shape must be inside the round image.
-4. Open `Wekinator/CPS_Wekinator.wekproj` (1936 inputs on port 6448, 1 classifier output with 5 classes, sent to port 12000). Record examples for each shape, train, then run.
-5. Watch the four boxes in `osc_to_arduino`: when the "Arduino" box says "confirmed", the class has arrived.
-
-# Wekinator
-
-## Settings
-
-- **Inputs:** 1936 values from `camera_to_wekinator.pde` (the 44 × 44 brightness grid, black outside the circle).
-- **Outputs:** 1 output, classifier, 5 classes.
-- **Training:** _(add the model type, how many examples per class, and how you recorded them)_
-- The repository holds the project settings (`inputConfig.xml`, `outputConfig.xml`, `CPS_Wekinator.wekproj`). _(add the trained model, or note that it is retrained before each demo)_
-
-## Inputs and Outputs
-
-The input is not a hand gesture but an object: red yarn wound round the pegs into a shape. A shape is easy to make and to change, and the red yarn shows up well against the white disc. MODE_0 in the instruction manual is the rest position, with all tentacles straight.
-
-| Class | Shape | Dance |
-| --- | --- | --- |
-| 1 | Triangle | Up/down wave: the four tentacles rise and fall one after another |
-| 2 | Square | Left/right wave |
-| 3 | Circle | Diagonal twitch: one diagonal pair twitches, and the pairs swap every 2 s |
-| 4 | Long thin loop | Cross-step dance: one pair sways left and right in mirror, the other pair nods up and down in mirror |
-| 5 | Half circle | Relay circle: one tentacle at a time draws a big circle, then passes it on |
+The two sketch folders have different names from the .pde files inside them. Processing 4 reads `sketch.properties` in each folder to find the right file.
 
 # Debugging
 
-Use the tests below to find where the chain stops working. Uploading a test sketch replaces the main tentacle sketch, so upload `tentacle_show.ino` again afterwards.
+Uploading a test sketch replaces the main sketch, so upload `tentacle_show.ino` again after testing.
 
-| Test | What it tests |
+| Test | What it tells you |
 | --- | --- |
-| [debug/CPS_Debug_Arduino_servo_test](debug/CPS_Debug_Arduino_servo_test/CPS_Debug_Arduino_servo_test.ino) with [CPS_Debug servo_test.html](debug/CPS_Debug%20servo_test.html) | Each of the 8 tentacle servos turns to 180°, then to 0°, and stops there, one at a time, from a button in the web page (Chrome or Edge, Web Serial, 9600 baud). Loosen the lines first, because 0–180° is far more than the tentacles need. |
-| Serial Monitor with `tentacle_show.ino` (115200 baud) | Set the line ending to "Newline" and type `1`–`5`. The Arduino answers `ACK n` (and `class:n` when the class changes). If you type it before the pick in the lid phase, that dance plays after the rest phase; otherwise one round later. |
-| The four boxes in `osc_to_arduino.pde` | Wekinator → stable → sent → confirmed by the Arduino. |
-| The feature map in `camera_to_wekinator.pde` | What Wekinator actually sees. |
+| [CPS_Debug_Arduino_servo_test.ino](debug/CPS_Debug_Arduino_servo_test/CPS_Debug_Arduino_servo_test.ino) with [CPS_Debug servo_test.html](debug/CPS_Debug%20servo_test.html) | Whether each of the 8 tentacle servos works. Open the page in Chrome or Edge (it uses Web Serial at 9600 baud) and press a button: that servo turns to 180, then to 0, then switches off. Loosen the lines first, because this is a much bigger swing than the tentacles can take. The lid servo is not part of this test. |
+| Serial Monitor with `tentacle_show.ino` (115200, "Newline") | Whether the Arduino gets classes. Type 1 to 5 and look for `ACK n`. |
+| The four boxes in `osc_to_arduino.pde` | Where the chain stops: Wekinator, stable class, sent, confirmed by the Arduino. |
+| The 44x44 grid in `camera_to_wekinator.pde` | What Wekinator actually sees. |
 
 ## Decision tree
 
-Use the matching letter in the issue tables.
-
 ```mermaid
----
-config:
-  theme: neutral
-  htmlLabels: false
-  flowchart:
-    nodeSpacing: 16
-    rankSpacing: 18
-    padding: 8
----
 flowchart TB
-    symptom["Tentacles behave incorrectly"] --> servoTest["Does the servo test move all 8 servos, one by one?"]
-    servoTest -->|"No"| hardwareCauses["H: Hardware"]
-    servoTest -->|"Yes"| bendTest["Upload tentacle_show; type 1-5 in the Serial Monitor"]
-    bendTest --> ackTest["Does the Arduino answer ACK n?"]
-    ackTest -->|"No"| serialCauses["C: Serial communication"]
-    ackTest -->|"Yes"| danceTest["After the lid phase, does each class give the expected dance?"]
-    danceTest -->|"No, a tentacle does not bend well"| lineCauses["T: Tentacle lines and mechanics"]
-    danceTest -->|"No, wrong dance, lid or timing"| actionCauses["A: Dances, lid and timing"]
-    danceTest -->|"Yes"| oscReceive["In osc_to_arduino, does the Wekinator box say receiving?"]
-    oscReceive -->|"No"| oscCauses["O: Wekinator output and OSC"]
-    oscReceive -->|"Yes"| confirmed["Does the Arduino box say confirmed?"]
-    confirmed -->|"No"| serialCauses
-    confirmed -->|"Yes"| classStable["Is the predicted class correct and stable?"]
-    classStable -->|"No"| inputUpdate["Does Wekinator keep receiving 1936 inputs?"]
-    inputUpdate -->|"No"| videoUpdate["Does camera_to_wekinator show a live image?"]
-    videoUpdate -->|"No"| videoCauses["V: Webcam and video capture"]
-    videoUpdate -->|"Yes"| inputCauses["I: Input count and OSC input"]
-    inputUpdate -->|"Yes"| modelCauses["M: Training data and classification"]
-    classStable -->|"Yes"| integratedAction["Does the right dance play after the lid closes?"]
-    integratedAction -->|"No"| runtimeCauses["U: Unstable Wekinator output"]
-    integratedAction -->|"Yes"| passed["This round of testing passes"]
+    A[Tentacles do the wrong thing] --> B[Servo test moves all 8 servos?]
+    B -- No --> H[Servo, wiring or power]
+    B -- Yes --> C[Typing 1-5 in the Serial Monitor gives ACK?]
+    C -- No --> S[Serial port or wrong sketch]
+    C -- Yes --> D[Right dance after the hood closes?]
+    D -- "No, tentacle hardly bends" --> T[Lines, pulleys or spine]
+    D -- "No, wrong tentacle or direction" --> P[Pins or timing in tentacle_show]
+    D -- Yes --> E[Wekinator box in osc_to_arduino says receiving?]
+    E -- No --> O[Wekinator output or OSC port]
+    E -- Yes --> F[Arduino box says confirmed?]
+    F -- No --> S
+    F -- Yes --> G[Predicted class right and steady?]
+    G -- No --> I[Round camera image moving?]
+    I -- No --> V[Camera]
+    I -- Yes --> M[Training data or input count]
+    G -- Yes --> OK[Working]
 ```
 
-The class is picked 20 s into the lid phase, 2 s before the lid starts to close, and danced after the 5 s rest. A shape changed after the pick waits for the next round (about 45 s). If Wekinator shows the right class but the Arduino keeps playing dance 1, the class never reached the Arduino (see C).
+## Problems and fixes
 
-## Tentacle issue table
-
-| Code | Problem | What to check |
+| Problem | Cause | What fixed it |
 | --- | --- | --- |
-| H (Hardware) | A servo does not move | Check its signal wire is on the pin given in `LR_pins` / `UD_pins`. Test one servo at a time. |
-| T (Tentacle) | A tentacle is bent at 90 | Turn the servo horn by one tooth so the tentacle is straight at 90. |
-|  | A line is loose, slips, or is pulled too tight | Check the line locks on the pulley and the tip head. |
-|  | A servo hums at the end of a move | The line is too tight. Loosen it at the tip head. |
-|  | The tentacle hardly bends | Use the softer spine (slit C or D) and the 12 mm pulley (v3). |
-| C (Communication) | The "Sent" box says "serial closed" | Set `PORT_HINT` in `osc_to_arduino.pde` to your Arduino port. Close the Serial Monitor and the servo test page, which also use the port. |
-|  | No `ACK` comes back | Use 115200 on both sides. Check that `tentacle_show.ino` (not the servo test) is uploaded. |
-|  | The Arduino was restarted | `osc_to_arduino` sends the class again within 1 s and after `READY`. Wait a moment. |
-| A (Dances, lid and timing) | The wrong tentacle moves | Check `LR_pins` and `UD_pins` against where each servo is plugged in. |
-|  | Up/down and left/right are swapped | Swap that tentacle's numbers in `LR_pins` and `UD_pins`. |
-|  | The lid opens the wrong way or too far | Change `head_closed` and `head_open`. |
-|  | Not enough time to change the shape, or waiting too long | Change `head_time`, `head_move_time`, `rest_time` and `phase_time`. Keep `head_time` at least 2 × `head_move_time` + 2000, so the class is picked while the lid is fully open. |
-|  | The dance is too fast or too big | Change the period (ms) or the number in front of `wave(...)` (degrees) in that dance. |
-
-## Input issue table
-
-| Code | Problem | What to check |
-| --- | --- | --- |
-| V (Video to Wekinator) | The camera does not start | Check the Video library and GStreamer. `avfvideosrc device-index=0` is for macOS; change `device-index` to pick another camera, or use the default capture on Windows. Allow camera access and close other camera apps. |
-|  | The shape is not inside the round image | Move the camera arm or the robot so the disc fills the circle. |
-| I (Wekinator input) | Wekinator expects the wrong number of inputs | Set Wekinator to 1936 inputs to match `gridSize = 44`. |
-|  | Inputs go to the wrong place | Check the Wekinator IP (127.0.0.1) and port 6448. |
-| M (Machine learning) | Training examples are missing or have wrong labels | Add enough examples for all five classes. |
-|  | Two shapes look too similar | Make the five shapes very different. Keep the light and the camera fixed. |
-|  | The camera or robot moved after training | Keep the same setup. Retrain after changes. |
-| O (OSC output) | The model is not trained or not running | Train the model, start it running, and check the predicted class. |
-|  | The box says "no OSC on 12000" | Check the output IP, port 12000 and `/wek/outputs`. Close other apps using port 12000. |
-|  | "Other OSC address received" appears | Wekinator sends to a different message name. Set it to `/wek/outputs`. |
-| U (Unstable output) | The class keeps changing around the pick time | Check that the class stays steady. Add more examples and retrain. |
+| Pulley would not sit on the servo horn | Our MG90S horns have a raised hub | Remodelled the pulley pocket around the real horn, plus a version for flat horns |
+| Line ends slipped | Knots don't hold in clear fishing line | Printed beads with a tapered hole and a piece of filament as a wedge |
+| Tentacle stopped short of a full bend | Not enough line per degree of servo turn | Pulley groove from 10 to 12 mm radius |
+| Tentacle hardly bent at all | Spine too stiff | Ring slits in the spine (iteration 3) |
+| Servos twitched or stopped when many moved | Not enough current for all servos at once | The dances move at most four tentacle servos at a time. Check the servo supply and the shared ground. |
+| LED strip clashing with a tentacle servo | Both were set to D11 in an early sketch | LED strip moved to D2 |
+| Tentacle bent when it should be straight | Horn put on one tooth off | Take the horn off and turn it by one tooth so the tentacle is straight at 90 |
+| "Sent" box says "serial closed" | Serial Monitor or the servo test page still has the port open | Close them, or set `PORT_HINT` |
+| No `ACK` | Wrong sketch on the board (the servo test or the old 9600 baud sketch) | Upload `tentacle_show.ino` |
+| Prediction jumps between two classes | Two shapes look alike, or too few examples | 200 ms filter in `osc_to_arduino`; record more examples |
+| Dance doesn't match the shape on the disc | The shape was changed after the class was taken | Wait for the next round |
+| Camera window class box says "WAITING FOR WEKINATOR" | Nothing sends to port 12001 | Expected; read the class in `osc_to_arduino` |
 
 # Rejected Ideas
 
-- **Silicone pneumatic tentacles:** they need pumps and valves that do not fit the 5 V kit. Line-driven tentacles can be printed and built quickly.
-- **Two lines per tentacle:** two lines only bend a tentacle in one plane. Four lines and two servos let it bend up, down, left and right.
-- **Solid TPU spine:** too stiff. A hollow spine was still too stiff, so the final spine has thin ring slits between the ribs.
-
-  ![Soft spine versions](images/drawings/07_soft_spine_versions.png)
-
-- **Wooden disc:** replaced by a printed chassis that is lighter and has holes for the electronics and the lid.
-- **One tentacle circling per class:** our first Wekinator version. The final version adds the lid phase, five dances and LEDs.
-- **All eight servos moving at once:** the supply could not run them. The dances now move no more than four servos at a time, apart from short moments.
+- **A robot that crawls on its tentacles.** This was our first plan. The MG90S servos were already near their limit just bending a tentacle upwards, so we gave up on walking and put the robot on a support where only the tentacles move.
+- **Silicone tentacles driven by air.** These need pumps and valves that are not in the 5 V kit. Tentacles pulled by lines could be printed and built in a few days.
+- **Two lines per tentacle.** Our first tentacle design only swept left and right. With two lines a tentacle bends in one plane only, so we went to four lines and two servos.
+- **A wooden disc as the body.** It was replaced by a printed chassis with a hole grid, so the stands, cables and lid could be mounted without drilling.
+- **Switching the dance as soon as the class changes.** In our earlier sketch every phase lasted 1 s and a new class was used straight away, so a hand or the closing hood in front of the camera could change the dance. Now the class is taken once per round, while the hood is still open.
 
 # Next steps
 
-- The model uses raw brightness values, so it is sensitive to light, shadows and the position of the shape. A fixed light and a black-and-white threshold would make it more robust.
-- A shape changed after the pick waits a whole round, so its dance can start almost a minute later.
-- The camera window listens on port 12001 to show the class, but nothing sends to that port yet, so it keeps showing "WAITING FOR WEKINATOR". `osc_to_arduino` could forward each class to 12001.
-- The MG90S servos are close to their torque limit when bending the tentacles up, and the lines stretch over time and need re-tensioning at the tip head.
-- The mast can sway a little. Thicker acrylic would be stiffer.
-- The Ø388 mm deck is wider than the 370 mm storage box, so it does not fit flat in the box. A smaller deck would.
+- The model works on raw brightness, so light, shadows and the position of the shape all affect it. A fixed lamp and a black-and-white threshold in `camera_to_wekinator` would make it more robust.
+- If the shape is changed after the class has been taken, its dance only comes a round later.
+- `osc_to_arduino` could forward each class to port 12001, so the camera window shows it too.
+- The MG90S servos are near their limit when bending a tentacle upwards, and the lines stretch over time and need tightening again at the tip.
+- The mast sways a little; thicker acrylic would be stiffer.
+- The deck is 388 mm across, a bit more than the 370 mm width of the storage box. A deck of about 360 mm would pack flat.
 - The film pleats between the wires and can catch when the hood closes.
-- The LEDs could react to the class, and a sensor in the lid could start a round when a shape is placed.
+- The LEDs could change with the class, and a test button for the lid servo would be useful in the servo test page.
 
----
+# References
 
-Disclaimer on AI usage: _(team: check and edit)_ The CAD models, the assembly drawings and parts of the Arduino and Processing code were made with help from Anthropic Claude. This README was drafted with Claude and edited by the team.  
-Cyber Physical Systems, Group 11: _(names)_
+- Fiebrink, R. Wekinator. http://www.wekinator.org/
+- IDE-GID-Cyberphysical-Systems, de-arm (course robot arm and example code). https://github.com/IDE-GID-Cyberphysical-Systems/de-arm
+- Course example code: the Processing video input example by Rebecca Fiebrink and the OSC to Arduino example by Becky Stewart (2022), which our two Processing sketches started from.
+- Processing Foundation. Processing 4 and the Video library (GStreamer). https://processing.org/
+- Schlegel, A. oscP5. https://sojamo.de/libraries/oscP5/
+- Arduino. Servo library. https://docs.arduino.cc/libraries/servo/
+- Adafruit. Adafruit NeoPixel library. https://github.com/adafruit/Adafruit_NeoPixel
+- Web Serial API (used by the servo test page). https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API
