@@ -41,7 +41,7 @@ Team Members: Ismail Kale, Siyu Sun, Shuheng Wang
 
 # Overview
 
-SPECIMEN51 is a soft jellyfish robot. Four tentacles hang from a round black body, and on top there is a clear hood that folds open and shut like the hood of a pram. While the hood is open, you wind a piece of red yarn around the pegs on the white disc to make a shape. A webcam above the robot looks at it and Wekinator decides which of our five shapes it is. Then the hood closes and the tentacles do the dance that belongs to that shape. After the dance the hood opens again for the next person.
+SPECIMEN51 is a soft jellyfish robot. Four tentacles hang from a round black body, and on top there is a clear hood that folds open and shut like the hood of a pram. While the hood is open, you wind a piece of red yarn around the pegs on the white disc to make a shape. A webcam above the robot looks at it and Wekinator decides which of our five shapes it is. Then the hood closes and the tentacles do the dance that belongs to that shape. After the dance the hood opens again for the next person. We set it up like a small surgery, with the jellyfish lying on an operating table under the camera like a specimen being examined. Winding the yarn is like wiring up its nerves: the visitor builds a small circuit on the disc, and the jellyfish answers with a dance.
 
 Demo video: [SPECIMEN51 on YouTube](https://www.youtube.com/shorts/cth6zIek0fg)
 
