@@ -180,7 +180,7 @@ An Arduino Nano Every drives eight MG90S servos (two per tentacle) and a SF90 se
 ## Circuit diagram
 ![Kicad Schematic](images/photos/schematic.png)
 ## Power
-As visible in the schematic above, the CPS power board was connected to the CPS power bank, providing the 5V and GND for the system. The two current limit jumpers were also shorted in order to supply the full 2A of current from the power bank, giving us a total power budget of 10W. The GND of the Arduino was tied to the power board GND to avoid floating grounds, but the 5V from the Arduino itself was kept separate from the power board so as to not draw additional power from the laptop USB supply (although as per USB 2.0 spec, it would have [only supplied 500mA](https://knowledge.cambrionix.com/Content/Articles/USB/Understanding-USB-Power-Standards.htm?TocPath=Articles%7CUSB%7C_____11)).
+As visible in the schematic above, the CPS power board was connected to the CPS power bank, providing the 5V and GND for the system. The two current limit jumpers were also shorted in order to supply the full 2A of current from the power bank, giving us a total power budget of 10W. The GND of the Arduino was tied to the power board GND to avoid floating grounds, but the 5V from the Arduino itself was kept separate from the power board so as to not draw additional power from the laptop USB supply (although as per USB 2.0 spec, it would have [only supplied 500mA so 2.5W extra](https://knowledge.cambrionix.com/Content/Articles/USB/Understanding-USB-Power-Standards.htm?TocPath=Articles%7CUSB%7C_____11) anyway).
 ## Wiring
 
 ![Wiring the servos under the robot body](images/photos/wiring.jpg)
