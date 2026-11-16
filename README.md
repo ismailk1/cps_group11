@@ -25,6 +25,7 @@ Team Members: Ismail Kale, Siyu Sun, Shuheng Wang
   - [Input](#input)
   - [Output](#output)
   - [Training and running the model](#training-and-running-the-model)
+  - [Testing the model](#testing-the-model)
   - [Improving the model](#improving-the-model)
 - [Processing](#processing)
   - [Processing_camera/camera_to_wekinator.pde](#processing_cameracamera_to_wekinatorpde)
@@ -41,6 +42,8 @@ Team Members: Ismail Kale, Siyu Sun, Shuheng Wang
 # Overview
 
 SPECIMEN51 is a soft jellyfish robot. Four tentacles hang from a round black body, and on top there is a clear hood that folds open and shut like the hood of a pram. While the hood is open, you wind a piece of red yarn around the pegs on the white disc to make a shape. A webcam above the robot looks at it and Wekinator decides which of our five shapes it is. Then the hood closes and the tentacles do the dance that belongs to that shape. After the dance the hood opens again for the next person.
+
+Demo video: [SPECIMEN51 on YouTube](https://www.youtube.com/shorts/cth6zIek0fg)
 
 We wanted an input that you make with your hands. The yarn stays on the disc, which means the camera can look at it the whole time the hood is open, and winding a new shape (or fixing an old one) only takes a few seconds. Red yarn on a white disc is also easy for the camera to pick out.
 
@@ -202,7 +205,13 @@ One classifier output with five classes, one for each shape. We picked a classif
 4. Do the same for classes 2 to 5, then train.
 5. Press Run. The predicted class goes to `osc_to_arduino.pde` and from there to the Arduino.
 
+We recorded about 2,500 examples in total for the five shapes and trained Wekinator's default classifier, k-nearest neighbour.
+
 The trained model isn't in the repository, only the settings. On a new computer, or in different light, it has to be trained again.
+
+## Testing the model
+
+When we tested the trained model, the triangle, the long thin loop and the half circle were classified correctly about 90% of the time. The square and the circle were often mixed up with each other.
 
 ## Improving the model
 
