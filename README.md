@@ -329,8 +329,6 @@ flowchart TB
 
 - Fiebrink, R. Wekinator. http://www.wekinator.org/
 - Fiebrink, R. Wekinator examples (the Processing webcam example our camera sketch started from). http://www.wekinator.org/examples/
-- Stewart, B. OSC to Arduino example (2022). Course material, Cyberphysical Systems.
-- IDE-GID-Cyberphysical-Systems. de-arm, the course robot arm. https://github.com/IDE-GID-Cyberphysical-Systems/de-arm
 - Processing Foundation. Processing 4 and the Video library. https://processing.org/
 - Schlegel, A. oscP5. https://sojamo.de/libraries/oscP5/
 - Arduino. Servo library. https://docs.arduino.cc/libraries/servo/
