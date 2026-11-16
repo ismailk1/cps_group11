@@ -1,6 +1,7 @@
 # SPECIMEN51: Cyberphysical Systems
 
-IDE Cyber Physical Systems, Group 11
+IDE Cyber Physical Systems, Group 11  
+Team Members: Ismail Kale, Siyu Sun, Shuheng Wang
 
 ![SPECIMEN51 on its display stand](images/photos/pic_1.jpg)
 
