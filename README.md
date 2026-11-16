@@ -228,7 +228,7 @@ flowchart LR
     C -- "OSC 12000, class 1-5" --> D[osc_to_arduino.pde]
     D -- "serial 115200, C1 to C5" --> E[tentacle_show.ino]
     E -- "ACK" --> D
-    E --> F[8 tentacle servos, lid servo, LEDs]
+    E --> F[8 tentacle servos, lid servo]
 ```
 
 Two Processing sketches sit between the camera, Wekinator and the Arduino, and one Arduino sketch runs the whole robot. They grew out of the code we used for the robot arm.
@@ -251,7 +251,7 @@ The Arduino goes round three phases:
 | 1 Rest | 5 s | All tentacles straight, hood closed. |
 | 2 Dance | 15 s | The dance for the class taken in phase 0. |
 
-Every phase change sends a short blue light along the LED strip. A class that comes in after the pick waits for the next round; this way the closing hood can't change the dance. Over serial the Arduino prints `READY` at start, `phase:n` at each phase change, `animation:n` when it takes the class, `class:n` when a new class comes in and `ACK n` for every message. You can also type a single digit into the Serial Monitor, which is handy for testing without Wekinator.
+The code also sends a short blue light along an LED strip at every phase change. We planned the strip at the start but ran out of time to fit it. A class that comes in after the pick waits for the next round; this way the closing hood can't change the dance. Over serial the Arduino prints `READY` at start, `phase:n` at each phase change, `animation:n` when it takes the class, `class:n` when a new class comes in and `ACK n` for every message. You can also type a single digit into the Serial Monitor, which is handy for testing without Wekinator.
 
 Only this sketch is needed to run the project.
 
@@ -310,7 +310,6 @@ flowchart TB
 | Tentacle stops short of a full bend | Too little line per degree | 12 mm pulley groove |
 | Tentacle hardly bends | Spine too stiff | Spine with ring slits (iteration 3) |
 | Servos twitch or stop when many move | Not enough current for all servos at once | Dances move at most four tentacle servos at a time; check the servo supply and the shared ground |
-| LED strip and a servo on the same pin | Both on D11 in an early sketch | LED strip moved to D2 |
 | Tentacle bent when it should be straight | Horn one tooth off | Turn the horn by one tooth so the tentacle is straight at 90 |
 | "Sent" box says "serial closed" | Serial Monitor or servo test page has the port open | Close them, or set `PORT_HINT` |
 | No `ACK` | Wrong sketch on the board, for example the servo test | Upload `tentacle_show.ino` |
@@ -324,7 +323,7 @@ flowchart TB
 - Raw brightness values make the model sensitive to shadows and room lighting; a fixed lamp and a simple black-and-white threshold in `camera_to_wekinator` would help a lot.
 - The fishing lines stretch over time and need re-tightening at the tip, so a low-stretch braided line would be better.
 - On the hardware side, thicker acrylic would stop the camera mast swaying, a slightly smaller deck (360 mm instead of 388 mm) would pack flat in the 370 mm storage box, and the hood film still occasionally catches when pleating between the wires.
-- On the software side, `osc_to_arduino` could forward the class to port 12001 for the camera window, the LEDs could change colour per dance, and the web test page needs a button for the lid servo.
+- On the software side, `osc_to_arduino` could forward the class to port 12001 for the camera window, the planned LED strip could be fitted and change colour per dance, and the web test page needs a button for the lid servo.
 
 # References
 
