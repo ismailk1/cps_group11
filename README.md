@@ -57,7 +57,7 @@ The instruction manual shows the five shapes (MODE_1 to MODE_5) and the dance ea
 
 One round lasts 45 s and then starts again: 25 s for the hood (3 s to open, about 19 s open, 3 s to close), 5 s of rest and 15 s of dancing. The class is taken 2 s before the hood starts to close, and the dance starts about 10 s after that.
 
-The display stand is based on an operating table, with splayed legs and a truss mast for the camera, and the jellyfish sits on it like a specimen being examined. The whole thing is about 66 cm tall and 53 cm wide at the feet, and the robot body sits 23 cm above the deck.
+The display stand is based on an operating table, and the jellyfish lies on it like a specimen being examined. The whole thing is about 66 cm tall and 53 cm wide at the feet, and the robot body sits 23 cm above the deck.
 
 | Running the software next to the exhibit | Front view with the hood open |
 | --- | --- |
