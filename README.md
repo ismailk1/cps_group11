@@ -176,9 +176,9 @@ The hood is four 1.5 mm steel half-circle wires on one hinge, joined by clear fi
 An Arduino Nano Every drives eight MG90S servos (two per tentacle) and a SF90 servo for the hood. We chose metal-gear MG90S servos because plastic gears can strip when pulling the tentacle lines. The webcam plugs into the laptop.
 
 ## Circuit diagram
-
+![Kicad Schematic](images/photos/schematic.png)
 ## Power
-
+As visible in the schematic above, the CPS power board was connected to the CPS power bank, providing the 5V and GND for the system. The two current limit jumpers were also shorted in order to supply the full 2A of current from the power bank, giving us a total power budget of 10W. The GND of the arduino was tied to the power board GND to avoid floating grounds, but the 5V from the arduino itself was kept separate from the power board so as to not draw additional power from the laptop USB supply (although as per USB 2.0 spec, it would have [only supplied 500mA](https://knowledge.cambrionix.com/Content/Articles/USB/Understanding-USB-Power-Standards.htm?TocPath=Articles%7CUSB%7C_____11).)
 ## Wiring
 
 ![Wiring the servos under the robot body](images/photos/wiring.jpg)
@@ -325,6 +325,7 @@ flowchart TB
 - Raw brightness values make the model sensitive to shadows and room lighting; a fixed lamp and a simple black-and-white threshold in `camera_to_wekinator` would help a lot.
 - The fishing lines stretch over time and need re-tightening at the tip, so a low-stretch braided line would be better.
 - On the hardware side, thicker acrylic would stop the camera mast swaying, a slightly smaller deck (360 mm instead of 388 mm) would pack flat in the 370 mm storage box, and the hood film still occasionally catches when pleating between the wires.
+- On the electronics side, soldering a veroboard would avoid many breadboard-related connection issues.
 - On the software side, `osc_to_arduino` could forward the class to port 12001 for the camera window, the planned LED strip could be fitted and change colour per dance, and the web test page needs a button for the lid servo.
 
 # References
