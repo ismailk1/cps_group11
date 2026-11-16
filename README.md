@@ -165,6 +165,8 @@ The lid ring, lid servo cover and rail are our own Onshape parts (see `cad/lid/`
 
 The hood is four 1.5 mm steel half-circle wires on one hinge, joined by clear film. The servo swings the outer wire forward, which pulls the others into a closed dome.
 
+The pattern was constructed in onshape as a typical "6-peel ball" pattern, and 3 were cut out of polythene sheet. A long strip of polythene was also folded over and stitched to create a long strip of "casing" (aka. channel). Finally the casing was sandwiched between the edges of two "peel" panels, channel-side out, and stitched together. The result was the 3-segment hemisphere hood, through which steel wire was carefully threaded and bent to shape.
+
 ![Hood open (servo at 160) and closed (servo at 10)](images/drawings/lid_open_closed.png)
 
 ![Closed hood](images/photos/pic_10.jpg)
