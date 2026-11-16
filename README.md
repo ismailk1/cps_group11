@@ -231,7 +231,7 @@ flowchart LR
     E --> F[8 tentacle servos, lid servo, LEDs]
 ```
 
-Two Processing sketches sit between the camera, Wekinator and the Arduino, and one Arduino sketch runs the whole robot. They grew out of the code we used for the robot arm (Rebecca Fiebrink's video example and Becky Stewart's OSC to Arduino example from the course).
+Two Processing sketches sit between the camera, Wekinator and the Arduino, and one Arduino sketch runs the whole robot. They grew out of the code we used for the robot arm.
 
 ## `Processing_camera/camera_to_wekinator.pde`
 
