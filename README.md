@@ -219,9 +219,7 @@ When we tested the trained model, the triangle, the long thin loop and the half 
 
 ## Improving the model
 
-With more time, we would record more varied training data: different people winding shapes at different sizes and positions under the actual exhibition lighting. We also need a 6th "idle" class for an empty or half-wound disc, since Wekinator currently forces every frame into one of the five shapes. With a larger dataset, we could also test other Wekinator classifiers (like SVM or decision trees) or a simple CNN to handle shifted and rotated shapes.
-
-Still, looking straight down at a 44x44 brightness grid, a messy square and a circle look very similar, and any big change in lighting still requires retraining.
+With more time, we would record training data under the actual exhibition lighting and try other Wekinator classifiers (such as SVM or decision trees) or a small CNN for shifted and rotated shapes. We also tried an "empty disc" class, but Wekinator often mistook the other shapes for it, so we dropped it: visitors take the disc off, wind it and put it back. We would like to solve this later. A messy square and a circle still look similar on a 44x44 grid, and a big change in lighting still needs retraining.
 
 # Processing
 
