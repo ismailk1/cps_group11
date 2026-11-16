@@ -342,4 +342,4 @@ flowchart TB
 
 # AI Disclaimer
 
-We used Claude Opus 5.5 to help sort out the repo files, polish the language and wording in the README, and turn our rough notes into Markdown and the Mermaid tree diagram. We also used it to talk through a few design and coding problems when we got stuck. The actual building, CAD, drawings and writing were done by hand by the team.
+We wrote the original drafts of this README ourselves, and used Claude to polish the English, format parts of the Markdown tables and Mermaid diagrams, and help organize the repository. We also used it to help write and debug parts of the Processing, Arduino, and web-test code. All mechanical design, CAD models, assembly drawings, physical building, and hardware testing on the robot were done by the team.
