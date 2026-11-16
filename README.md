@@ -235,11 +235,11 @@ Two Processing sketches sit between the camera, Wekinator and the Arduino, and o
 
 ## `Processing_camera/camera_to_wekinator.pde`
 
-Opens the webcam at 1280x720, cuts out the round middle part and sends the 44x44 grid to Wekinator on port 6448. The window shows the round camera image, the grid Wekinator receives and how many frames have been sent. The camera is opened through GStreamer with `avfvideosrc`, which only works on macOS. There is also a class box in this window, but it stays at "WAITING FOR WEKINATOR": it listens on port 12001 and nothing sends there yet. Read the class in `osc_to_arduino` instead.
+Opens the webcam, cuts out the round disc and sends a 44x44 grid to Wekinator on port 6448. It is set up for macOS; on Windows, replace `"pipeline:avfvideosrc device-index=0"` in `setup()` with `Capture.list()[0]`. Ignore the class box in the window.
 
 ## `Processing_osc_to_arduino/osc_to_arduino.pde`
 
-Listens for `/wek/outputs` on port 12000 and rounds the value to a class from 1 to 5. A class has to hold for 200 ms before it is sent, which filters out one-frame flickers. It sends the class as a line of text (`C3`) when it changes and again every second in case the Arduino has restarted, and the Arduino answers `ACK 3`. The window has four boxes: what Wekinator sends, the stable class, the class that was sent, and the class the Arduino confirmed. The sketch finds the Arduino by part of the port name (`PORT_HINT = "usbmodem"` on a Mac, something like `"COM3"` on Windows). If it can't find or open the port, or a read or write on it fails, it tries again every 2 s.
+Takes the class from Wekinator on port 12000 and sends it to the Arduino once it has held for 200 ms, which filters out flickers. The Arduino answers `ACK`, and the window shows what Wekinator sends and whether the Arduino confirmed it. Set `PORT_HINT` to Arduino's port name (`"usbmodem"` on a Mac, e.g. `"COM3"` on Windows).
 
 ## `arduino/tentacle_show.ino`
 
