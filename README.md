@@ -53,7 +53,7 @@ The instruction manual shows the five shapes (MODE_1 to MODE_5) and the dance ea
 
 One round lasts 45 s and then starts again: 25 s for the hood (3 s to open, about 19 s open, 3 s to close), 5 s of rest and 15 s of dancing. The class is taken 2 s before the hood starts to close, and the dance starts about 10 s after that.
 
-The display stand is based on an operating table, with splayed legs and a truss mast for the camera, and the jellyfish sits on it like a specimen being examined. The printed parts are black PLA. The deck, the stand plates and the hood are all clear, and the robot is what you notice first. The whole thing is about 66 cm tall and 53 cm wide at the feet, and the robot body sits 23 cm above the deck.
+The display stand is based on an operating table, with splayed legs and a truss mast for the camera, and the jellyfish sits on it like a specimen being examined. The whole thing is about 66 cm tall and 53 cm wide at the feet, and the robot body sits 23 cm above the deck.
 
 | Running the software next to the exhibit | Front view with the hood open |
 | --- | --- |
@@ -63,7 +63,7 @@ The display stand is based on an operating table, with splayed legs and a truss 
 
 ## From the robot arm to tentacles
 
-The brief starts from the course robot arm. We kept the control chain we had built in the arm exercise: camera, Wekinator, Processing, Arduino, servos. The arm itself we left behind, because a jellyfish doesn't move like a rigid arm. The arm moves four servos, one per joint, to fixed positions. SPECIMEN51 has nine servos, two for each tentacle and one for the hood, and each tentacle bends along its whole length in any direction. That is what lets the dances be waves and circles instead of poses.
+We kept the software pipeline from the course robot arm exercise (webcam, Wekinator, Processing, Arduino, servos), but replaced the rigid four-joint arm with a soft mechanism. SPECIMEN51 uses nine servos (two per tentacle and one for the hood) so the tentacles can bend in any direction for waves and circles instead of fixed poses.
 
 ## Assembly drawings
 
@@ -205,9 +205,9 @@ The trained model isn't in the repository, only the settings. On a new computer,
 
 ## Improving the model
 
-With more time we would record more varied data: other people winding, different sizes and positions, in the room where we show it. That should help most with shapes from people the model has never seen. We would add a class for an empty or half-wound disc, which is now always read as one of the five shapes, and compare Wekinator's classifiers (k-nearest neighbour, AdaBoost, decision tree, SVM, naive Bayes) on the same recordings. With much more data, a small CNN on the images might handle moved or turned shapes better.
+With more time, we would record more varied training data: different people winding shapes at different sizes and positions under the actual exhibition lighting. We also need a 6th "idle" class for an empty or half-wound disc, since Wekinator currently forces every frame into one of the five shapes. With a larger dataset, we could also test other Wekinator classifiers (like SVM or decision trees) or a simple CNN to handle shifted and rotated shapes.
 
-More data won't fix everything. From straight above, a circle and a rounded square look alike, and a new room or different light means training again.
+Still, looking straight down at a 44x44 brightness grid, a messy square and a circle look very similar, and any big change in lighting still requires retraining.
 
 # Processing
 
@@ -253,8 +253,6 @@ Only this sketch is needed to run the project.
 4. Run `Processing_camera/camera_to_wekinator.pde` and check that the yarn shape is inside the round image.
 5. Start Wekinator with our settings (see Training and running the model), train and press Run.
 6. When the "Arduino" box in `osc_to_arduino` says "confirmed", the class has reached the robot.
-
-The two sketch folders have different names from the .pde files inside them. Processing 4 reads `sketch.properties` in each folder to find the right file.
 
 # Debugging
 
@@ -307,15 +305,12 @@ flowchart TB
 
 # Limitations and Potential Explorations
 
-- The MG90S servos are near their limit when a tentacle bends upwards. That is why our first plan, a robot that crawls on its tentacles, became a robot on a support. With stronger servos, crawling could be worth another try.
-- Air-driven silicone tentacles would be another way to get soft movement, but they need pumps and valves that aren't in the 5 V kit.
-- Light and shadows change what the camera sees. A fixed lamp and a simple black-and-white threshold in `camera_to_wekinator` would help.
-- The fishing line stretches and has to be tightened at the tip after a while. A line that stretches less would fix that.
-- The mast sways a little. Thicker acrylic would make it stiffer.
-- At 388 mm the deck is a bit wider than the 370 mm storage box. About 360 mm would fit.
-- The film can catch when the hood closes, because it pleats between the wires.
-- The class only shows in the `osc_to_arduino` window. Forwarding it to port 12001 would show it in the camera window too, and the LEDs could change with it.
-- The servo test page has no button for the lid servo yet.
+- The MG90S servos are near their torque limit just lifting a tentacle, which is why we dropped our original crawling-robot idea and put SPECIMEN51 on a stand. Stronger servos would let us try walking again.
+- We also considered air-driven silicone tentacles, but the pumps and valves don't fit the 5 V course kit.
+- Raw brightness values make the model sensitive to shadows and room lighting; a fixed lamp and a simple black-and-white threshold in `camera_to_wekinator` would help a lot.
+- The fishing lines stretch over time and need re-tightening at the tip, so a low-stretch braided line would be better.
+- On the hardware side, thicker acrylic would stop the camera mast swaying, a slightly smaller deck (360 mm instead of 388 mm) would pack flat in the 370 mm storage box, and the hood film still occasionally catches when pleating between the wires.
+- On the software side, `osc_to_arduino` could forward the class to port 12001 for the camera window, the LEDs could change colour per dance, and the web test page needs a button for the lid servo.
 
 # References
 
@@ -328,3 +323,7 @@ flowchart TB
 - Arduino. Servo library. https://docs.arduino.cc/libraries/servo/
 - Adafruit. Adafruit NeoPixel library. https://github.com/adafruit/Adafruit_NeoPixel
 - MDN. Web Serial API. https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API
+
+# AI Disclaimer
+
+We used Claude Opus 5.5 to help sort out the repo files, polish the language and wording in the README, and turn our rough notes into Markdown and the Mermaid tree diagram. We also used it to talk through a few design and coding problems when we got stuck. The actual building, CAD, drawings and writing were done by hand by the team.
