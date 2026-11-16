@@ -34,8 +34,7 @@ Team Members: Ismail Kale, Siyu Sun, Shuheng Wang
 - [Debugging](#debugging)
   - [Decision tree](#decision-tree)
   - [Problems and fixes](#problems-and-fixes)
-- [Rejected ideas](#rejected-ideas)
-- [Next steps](#next-steps)
+- [Limitations and Potential Explorations](#limitations-and-potential-explorations)
 - [References](#references)
 
 # Overview
@@ -136,7 +135,7 @@ All STL files are already turned the right way for printing. PLA at 0.2 mm layer
 
 ![A tentacle bending sideways in front of the camera mast](images/photos/pic_6.jpg)
 
-Each tentacle is a soft TPU spine with 15 hard ribs on it, 10 mm apart. The ribs get smaller towards the tip, from 26 mm across at the root to 20 mm. Four fishing lines run through holes in the ribs (top, bottom, left, right), and at the tip each line is locked against the last rib with a small printed bead (more about these below). At the root, the left and right lines go round a pulley on one servo and the up and down lines round a pulley on the other. Turning a servo shortens one line and lets out the opposite one, and the tentacle curls towards the short side. With both servos moving together it can bend in any direction, which is how the relay dance draws circles. We tested one tentacle on its own before building the other three.
+Each tentacle is a soft TPU spine with 15 hard ribs, 10 mm apart, getting smaller from 26 mm at the root to 20 mm at the tip. Four fishing lines (top, bottom, left, right) run through the ribs and are locked at the tip with small printed beads. At the root, each pair of opposite lines goes round the pulley of one servo, and with two servos the tentacle can bend in any direction.
 
 ![One tentacle on the robot](images/photos/pic_7.jpg)
 
@@ -144,13 +143,13 @@ The spine went through four iterations. The first was solid TPU and hardly bent 
 
 ![Spine iterations 1 to 4](images/drawings/spine_iterations.png)
 
-The pulleys went through a few versions too. The first one didn't fit our MG90S horns because they have a raised hub, and we had to remodel the pocket around the real horn (plus a flat version for the servos that came with flat horns). After that the tentacle still didn't bend all the way when the servo hit its end. Making the groove bigger, from 10 mm to 12 mm radius, fixed it, because every degree of servo turn now pulls more line. Knots also kept slipping in the clear fishing line. In the end we printed little beads with a tapered hole: the line goes through and a short bit of 1.75 mm filament is pushed in after it as a wedge.
+The pulleys changed twice. The first didn't fit the raised hub of our MG90S horns, and we remodelled the pocket around the real horn (plus a version for flat horns). A bigger groove, 12 mm radius instead of 10, then let the tentacle bend all the way. Knots slipped in the fishing line, so each line end goes through a bead with a tapered hole and is wedged with a short bit of 1.75 mm filament.
 
 ## Body and support
 
-The four tentacle stands are screwed under a printed chassis 225 mm across. Each stand holds two servos and points its tentacle 30 degrees down. The chassis has a grid of M3 holes, which made it easy to move things around while building, plus holes for the cables. In the middle of the deck the robot sits on a thin printed tube (P14) with a cap (P15) and one M4x30 screw. That screw has to be a button head; a socket head touches the lid.
+The four tentacle stands are screwed under a printed chassis 225 mm across. Each holds two servos and points its tentacle 30 degrees down. The robot sits on a thin printed tube (P14) with a cap (P15) and an M4x30 button-head screw, because a socket head touches the lid.
 
-The display stand is two 3 mm clear acrylic discs (388 mm) on three splayed legs with printed joints. A mast at the back carries a sliding arm for the webcam, adjustable from 250 to 500 mm above the deck. We keep it above about 390 mm, because lower down the closed hood is in the camera's way.
+The display stand is two 388 mm clear acrylic discs on three splayed legs. The webcam slides up a mast at the back, and above about 390 mm the closed hood is out of its view.
 
 ![Webcam on the sliding arm](images/photos/pic_2.jpg)
 
@@ -158,9 +157,9 @@ The display stand is two 3 mm clear acrylic discs (388 mm) on three splayed legs
 
 ![Onshape model of the lid, servo cover and outer wire](images/cad_servo_mount.png)
 
-The lid ring, the cover for the lid servo and the rail it sits on are our own Onshape parts (see `cad/`). On top of the lid is a white disc with eight clear acrylic pegs for the yarn.
+The lid ring, lid servo cover and rail are our own Onshape parts (see `cad/`). On top sits a white disc with eight clear acrylic pegs for the yarn.
 
-The hood itself is four 1.1 mm steel wires, each bent into a half circle of a slightly different size (radius 115, 117, 119 and 121 mm). They all turn about the same axis across the lid. The smallest one is fixed lying flat at the back, the two middle ones are loose, and the biggest one is attached to the lid servo horn. On the far side the wire ends hook round a short twisted piece of steel wire sticking out of the lid. A clear film is fixed along all four wires. When the servo swings the outer wire forward, the film drags the two loose wires with it and unfolds into a closed dome.
+The hood is four 1.1 mm steel wires bent into half circles (radius 115 to 121 mm) that turn about one axis across the lid. The smallest is fixed flat at the back, two are loose and the biggest is on the servo horn. A clear film joins all four, and when the servo swings the outer wire forward, it pulls the others into a closed dome.
 
 ![Hood open (servo at 160) and closed (servo at 10)](images/drawings/lid_open_closed.png)
 
@@ -206,9 +205,9 @@ The trained model isn't in the repository, only the settings. On a new computer,
 
 ## Improving the model
 
-If we had more time, we would mostly collect more training data: other people winding the shapes, bigger and smaller shapes in different spots on the pegs, recorded in the rooms where we show it. We would also add a class for an empty disc and half-wound shapes. Right now there are only five classes, and an empty disc is always read as one of them. More data would help most with shapes from people the model has never seen. Wekinator also has other classifiers for this kind of output (k-nearest neighbour, AdaBoost, decision tree, SVM, naive Bayes), and comparing them on the same recordings would be quick. With a lot more data, a small convolutional network trained on the images might cope better with shapes that are moved or turned, but we haven't tried that.
+With more time we would record more varied data: other people winding, different sizes and positions, in the room where we show it. That should help most with shapes from people the model has never seen. We would add a class for an empty or half-wound disc, which is now always read as one of the five shapes, and compare Wekinator's classifiers (k-nearest neighbour, AdaBoost, decision tree, SVM, naive Bayes) on the same recordings. With much more data, a small CNN on the images might handle moved or turned shapes better.
 
-Better data won't fix everything though. The camera only sees brightness from straight above, and a circle and a rounded square look pretty similar from there. Light changes the numbers too, which means retraining in a new room or bringing our own lamp. And the robot only reacts once per round anyway.
+More data won't fix everything. From straight above, a circle and a rounded square look alike, and a new room or different light means training again.
 
 # Processing
 
@@ -222,13 +221,7 @@ flowchart LR
     E --> F[8 tentacle servos, lid servo, LEDs]
 ```
 
-Two Processing sketches sit between the camera, Wekinator and the Arduino, and one Arduino sketch runs the whole robot. They grew out of the code we used for the robot arm (Rebecca Fiebrink's video example and Becky Stewart's OSC to Arduino example from the course). The main differences:
-
-| | Robot arm | SPECIMEN51 |
-| --- | --- | --- |
-| Camera input | Brightness grid of the whole image | Brightness grid of the round disc only |
-| Wekinator to Arduino | One byte when the class changes | A text line like `C3`, sent once the class is stable and confirmed by the Arduino |
-| Arduino | Four arm servos moved with switch cases and for loops | Nine servos and an LED strip in a loop of lid, rest and dance phases, with sine-wave dances |
+Two Processing sketches sit between the camera, Wekinator and the Arduino, and one Arduino sketch runs the whole robot. They grew out of the code we used for the robot arm (Rebecca Fiebrink's video example and Becky Stewart's OSC to Arduino example from the course).
 
 ## `Processing_camera/camera_to_wekinator.pde`
 
@@ -312,24 +305,17 @@ flowchart TB
 | Prediction jumps between two classes | Shapes too alike, or too few examples | 200 ms filter in `osc_to_arduino`; record more examples |
 | Dance doesn't match the shape on the disc | Shape changed after the class was taken | Wait one round |
 
-# Rejected ideas
+# Limitations and Potential Explorations
 
-- Our first plan was a robot that crawls on its tentacles. The MG90S servos could only just bend a tentacle upwards, and carrying the body on top of that wasn't going to work. We put the robot on a support instead, where only the tentacles move.
-- Silicone tentacles driven by air would need pumps and valves that aren't in the 5 V kit. Tentacles pulled by lines we could print and put together in a few days.
-- Our first tentacle design had two lines and only swept left and right. Two lines can only bend a tentacle in one plane, which is why the final one has four lines and two servos.
-- The body started as a wooden disc. We replaced it with a printed chassis with a hole grid, and after that the stands, cables and lid could be mounted without drilling.
-- In our earlier sketch every phase lasted 1 s and a new class was used straight away. A hand or the closing hood in front of the camera could change the dance halfway. Now the class is taken once per round, while the hood is still open.
-
-# Next steps
-
-- Add a fixed lamp and a simple black-and-white threshold in `camera_to_wekinator`, to make light and shadows matter less.
-- Forward the class from `osc_to_arduino` to port 12001, so the camera window can show it as well.
-- Try stronger servos. The MG90S are near their limit when a tentacle bends upwards.
-- Use a fishing line that stretches less. Ours has to be tightened again at the tip after a while.
-- Make the mast out of thicker acrylic; it sways a little now.
-- Make the deck about 360 mm across. At 388 mm it is a bit wider than the 370 mm storage box.
-- Stop the film from catching when the hood closes (it pleats between the wires).
-- Let the LEDs change with the class, and add a lid servo button to the servo test page.
+- The MG90S servos are near their limit when a tentacle bends upwards. That is why our first plan, a robot that crawls on its tentacles, became a robot on a support. With stronger servos, crawling could be worth another try.
+- Air-driven silicone tentacles would be another way to get soft movement, but they need pumps and valves that aren't in the 5 V kit.
+- Light and shadows change what the camera sees. A fixed lamp and a simple black-and-white threshold in `camera_to_wekinator` would help.
+- The fishing line stretches and has to be tightened at the tip after a while. A line that stretches less would fix that.
+- The mast sways a little. Thicker acrylic would make it stiffer.
+- At 388 mm the deck is a bit wider than the 370 mm storage box. About 360 mm would fit.
+- The film can catch when the hood closes, because it pleats between the wires.
+- The class only shows in the `osc_to_arduino` window. Forwarding it to port 12001 would show it in the camera window too, and the LEDs could change with it.
+- The servo test page has no button for the lid servo yet.
 
 # References
 
