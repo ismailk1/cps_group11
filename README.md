@@ -291,7 +291,6 @@ flowchart TB
     J -- Yes --> M["Training data<br>Record more, train again"]
     G -- Yes --> K["Shape changed too late<br>Wait one round"]
 ```
-```
 
 ## Problems and fixes
 
