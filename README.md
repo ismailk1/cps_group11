@@ -173,7 +173,7 @@ The hood is four 1.5 mm steel half-circle wires on one hinge, joined by clear fi
 
 ## Components
 
-An Arduino Nano Every runs the robot. It drives eight MG90S servos (two per tentacle) and a micro servo for the hood. We chose MG90S over SG90 servos because their metal gears and extra torque cope better with pulling the tentacle lines. The parts are connected on breadboards, and the webcam plugs into the laptop, not the Arduino.
+An Arduino Nano Every drives eight MG90S servos (two per tentacle) and a SF90 servo for the hood. We chose metal-gear MG90S servos because plastic gears can strip when pulling the tentacle lines. The webcam plugs into the laptop.
 
 ## Circuit diagram
 
