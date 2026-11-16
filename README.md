@@ -36,6 +36,7 @@ Team Members: Ismail Kale, Siyu Sun, Shuheng Wang
   - [Problems and fixes](#problems-and-fixes)
 - [Limitations and Potential Explorations](#limitations-and-potential-explorations)
 - [References](#references)
+- [AI Disclaimer](#ai-disclaimer)
 
 # Overview
 
