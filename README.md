@@ -163,7 +163,7 @@ The display stand is two 388 mm clear acrylic discs on three splayed legs. The w
 
 The lid ring, lid servo cover and rail are our own Onshape parts (see `cad/lid/`). On top sits a white disc with eight clear acrylic pegs for the yarn.
 
-The hood is four 1.1 mm steel wires bent into half circles (radius 115 to 121 mm) that turn about one axis across the lid. The smallest is fixed flat at the back, two are loose and the biggest is on the servo horn. A clear film joins all four, and when the servo swings the outer wire forward, it pulls the others into a closed dome.
+The hood is four 1.5 mm steel half-circle wires on one hinge, joined by clear film. The servo swings the outer wire forward, which pulls the others into a closed dome.
 
 ![Hood open (servo at 160) and closed (servo at 10)](images/drawings/lid_open_closed.png)
 
