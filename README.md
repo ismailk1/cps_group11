@@ -324,7 +324,6 @@ flowchart TB
 - We also considered air-driven silicone tentacles, but the pumps and valves don't fit the 5 V course kit.
 - Raw brightness values make the model sensitive to shadows and room lighting; a fixed lamp and a simple black-and-white threshold in `camera_to_wekinator` would help a lot.
 - The fishing lines stretch over time and need re-tightening at the tip, so a low-stretch braided line would be better.
-- On the hardware side, thicker acrylic would stop the camera mast swaying, a slightly smaller deck (360 mm instead of 388 mm) would pack flat in the 370 mm storage box, and the hood film still occasionally catches when pleating between the wires.
 - On the software side, `osc_to_arduino` could forward the class to port 12001 for the camera window, the planned LED strip could be fitted and change colour per dance, and the web test page needs a button for the lid servo.
 
 # References
