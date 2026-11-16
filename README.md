@@ -183,7 +183,7 @@ The hood is four 1.1 mm steel wires bent into half circles (radius 115 to 121 mm
 
 ## Input
 
-The input is the yarn shape on the disc, seen from above by the webcam. `camera_to_wekinator.pde` cuts a circle out of the middle of the image that just covers the disc and blacks out everything else. It then samples a 44x44 grid of brightness values (1936 inputs between 0 and 1) and sends them to Wekinator every third frame. For the robot arm we sent the whole 80x80 image (6400 values). Now only the disc goes in, and people moving around the robot don't change the input (a hand over the disc still does).
+The input is the yarn shape on the disc, seen from above by the webcam. `camera_to_wekinator.pde` cuts a circle out of the middle of the image that just covers the disc and blacks out everything else. It then samples a 44x44 grid of brightness values (1936 inputs between 0 and 1) and sends them to Wekinator every third frame. 
 
 ## Output
 
