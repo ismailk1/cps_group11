@@ -131,7 +131,7 @@ All the parts we printed or cut are in `cad/`. The codes are the same as on the 
 | Lid servo rail, laser-cut | [servo attachment rail.dxf](cad/lid/servo%20attachment%20rail.dxf) |
 | Lid and servo, whole assembly | [lid motor assembly.step](cad/lid/lid%20motor%20assembly.step) |
 
-All STL files are already turned the right way for printing. PLA at 0.2 mm layers, 3 walls, 15% infill, no supports. The ribs need 4 walls or 100% infill, and the line locks thinner layers (0.12-0.16 mm) so their small holes come out round. For the TPU 90A spines, dry the filament first and print slowly (max 2-2.5 mm3/s), with 4 walls and 100% infill, lying flat.
+All STL files are already turned the right way for printing. PLA at 0.2 mm layers, 3 walls, 15% infill, no supports. For the TPU 90A spines, dry the filament first and print slowly (max 2-2.5 mm3/s), with 4 walls and 100% infill, lying flat.
 
 # Mechanisms
 
