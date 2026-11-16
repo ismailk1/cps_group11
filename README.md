@@ -59,7 +59,7 @@ One round lasts 45 s and then starts again: 25 s for the hood (3 s to open, abou
 
 The display stand is based on an operating table, and the jellyfish lies on it like a specimen being examined. The whole thing is about 66 cm tall and 53 cm wide at the feet, and the robot body sits 23 cm above the deck.
 
-| Running the software next to the exhibit | Front view with the hood open |
+| Running the software next to the exhibit | Front view with the hood closed |
 | --- | --- |
 | ![Running the software next to the exhibit](images/photos/pic_4.jpg) | ![Front view with the hood open](images/photos/pic_9.jpg) |
 
