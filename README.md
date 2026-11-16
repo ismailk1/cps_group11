@@ -51,9 +51,9 @@ We wanted an input that you make with your hands. The yarn stays on the disc, wh
 
 The instruction manual shows the five shapes (MODE_1 to MODE_5) and the dance each one triggers. MODE_0 is the rest pose with all tentacles straight.
 
-| Square on the pegs | Triangle under the open hood |
+| Square on the pegs | Triangle under the closing hood |
 | --- | --- |
-| ![Square shape on the pegs](images/photos/pic_3.jpg) | ![Triangle shape under the open hood](images/photos/pic_8.jpg) |
+| ![Square shape on the pegs](images/photos/pic_3.jpg) | ![Triangle shape under the closing hood](images/photos/pic_8.jpg) |
 
 One round lasts 45 s and then starts again: 25 s for the hood (3 s to open, about 19 s open, 3 s to close), 5 s of rest and 15 s of dancing. The class is taken 2 s before the hood starts to close, and the dance starts about 10 s after that.
 
@@ -61,7 +61,7 @@ The display stand is based on an operating table, and the jellyfish lies on it l
 
 | Running the software next to the exhibit | Front view with the hood closed |
 | --- | --- |
-| ![Running the software next to the exhibit](images/photos/pic_4.jpg) | ![Front view with the hood open](images/photos/pic_9.jpg) |
+| ![Running the software next to the exhibit](images/photos/pic_4.jpg) | ![Front view with the hood closed](images/photos/pic_9.jpg) |
 
 # Design
 
