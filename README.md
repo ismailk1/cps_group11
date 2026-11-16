@@ -270,22 +270,27 @@ Uploading a test sketch replaces the main sketch, so upload `tentacle_show.ino` 
 
 ```mermaid
 flowchart TB
-    A[Tentacles do the wrong thing] --> B[Servo test moves all 8 servos?]
-    B -- No --> H[Servo, wiring or power]
+    A[Tentacles do the wrong thing] --> Q[Hood opens and closes?]
+    Q -- No --> L["Board or power<br>Look for READY at 115200"]
+    Q -- Yes --> B[Servo test moves all 8 servos?]
+    B -- No --> H["Servo, wiring or power<br>Check 5 V and shared GND"]
     B -- Yes --> C[Typing 1-5 in the Serial Monitor gives ACK?]
-    C -- No --> S[Serial port or wrong sketch]
+    C -- No --> S["Wrong sketch<br>Upload tentacle_show.ino again"]
     C -- Yes --> D[Right dance after the hood closes?]
-    D -- "No, tentacle hardly bends" --> T[Lines, pulleys or spine]
-    D -- "No, wrong tentacle or direction" --> P[Pins or timing in tentacle_show]
-    D -- Yes --> E[Wekinator box in osc_to_arduino says receiving?]
-    E -- No --> O[Wekinator output or OSC port]
+    D -- "No, tentacle hardly bends" --> T["Lines or pulleys<br>Tighten the lines at the tip"]
+    D -- "No, wrong tentacle or direction" --> P["Pins or horn<br>Check pins or turn horn one tooth"]
+    D -- Yes --> E[Wekinator box says receiving?]
+    E -- No --> O["Wekinator output<br>Press Run, check port 12000"]
     E -- Yes --> F[Arduino box says confirmed?]
-    F -- No --> S
+    F -- No --> S2["Serial port<br>Close Serial Monitor, check PORT_HINT"]
     F -- Yes --> G[Predicted class right and steady?]
     G -- No --> I[Round camera image moving?]
-    I -- No --> V[Camera]
-    I -- Yes --> M[Training data or input count]
-    G -- Yes --> K[Shape changed after the class was taken? Wait one round]
+    I -- No --> V["Camera<br>Check cable, close other camera apps"]
+    I -- Yes --> J[Disc fills the circle?]
+    J -- No --> R["Camera height or light<br>Move the camera on the mast"]
+    J -- Yes --> M["Training data<br>Record more, train again"]
+    G -- Yes --> K["Shape changed too late<br>Wait one round"]
+```
 ```
 
 ## Problems and fixes
