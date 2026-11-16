@@ -118,15 +118,15 @@ All the parts we printed or cut are in `cad/`. The codes are the same as on the 
 | P14 | Robot support | 1 | [P14_robot_support.stl](cad/display_stand/P14_robot_support.stl) |
 | P15 | Robot cap | 1 | [P15_robot_cap.stl](cad/display_stand/P15_robot_cap.stl) |
 
-**Lid** (`cad/`, T1). These parts we modelled in Onshape:
+**Lid** (`cad/lid/`, T1). These parts we modelled in Onshape:
 
 | Part | File |
 | --- | --- |
-| Lid ring, 224 mm | [super ring.stl](cad/super%20ring.stl) |
-| Lid servo cover (half) | [servo cover half.stl](cad/servo%20cover%20half.stl) |
-| Wire holder on the lid servo horn | [servo horn wire holder v2.stl](cad/servo%20horn%20wire%20holder%20v2.stl) |
-| Lid servo rail, laser-cut | [servo attachment rail.dxf](cad/servo%20attachment%20rail.dxf) |
-| Lid and servo, whole assembly | [lid motor assembly.step](cad/lid%20motor%20assembly.step) |
+| Lid ring, 224 mm | [super ring.stl](cad/lid/super%20ring.stl) |
+| Lid servo cover (half) | [servo cover half.stl](cad/lid/servo%20cover%20half.stl) |
+| Wire holder on the lid servo horn | [servo horn wire holder v2.stl](cad/lid/servo%20horn%20wire%20holder%20v2.stl) |
+| Lid servo rail, laser-cut | [servo attachment rail.dxf](cad/lid/servo%20attachment%20rail.dxf) |
+| Lid and servo, whole assembly | [lid motor assembly.step](cad/lid/lid%20motor%20assembly.step) |
 
 All STL files are already turned the right way for printing. PLA at 0.2 mm layers, 3 walls, 15% infill, no supports. The ribs need 4 walls or 100% infill, and the line locks thinner layers (0.12-0.16 mm) so their small holes come out round. For the TPU 90A spines, dry the filament first and print slowly (max 2-2.5 mm3/s), with 4 walls and 100% infill, lying flat.
 
@@ -158,7 +158,7 @@ The display stand is two 388 mm clear acrylic discs on three splayed legs. The w
 
 ![Onshape model of the lid, servo cover and outer wire](images/cad_servo_mount.png)
 
-The lid ring, lid servo cover and rail are our own Onshape parts (see `cad/`). On top sits a white disc with eight clear acrylic pegs for the yarn.
+The lid ring, lid servo cover and rail are our own Onshape parts (see `cad/lid/`). On top sits a white disc with eight clear acrylic pegs for the yarn.
 
 The hood is four 1.1 mm steel wires bent into half circles (radius 115 to 121 mm) that turn about one axis across the lid. The smallest is fixed flat at the back, two are loose and the biggest is on the servo horn. A clear film joins all four, and when the servo swings the outer wire forward, it pulls the others into a closed dome.
 
