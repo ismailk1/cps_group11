@@ -320,7 +320,7 @@ flowchart TB
 
 # Limitations and Potential Explorations
 
-- The MG90S servos are near their torque limit just lifting a tentacle, which is why we dropped our original crawling-robot idea and put SPECIMEN51 on a stand. Stronger servos would let us try walking again.
+- The MG90S servos are near their torque limit just lifting a tentacle. Stronger servos would let us try walking again.
 - We also considered air-driven silicone tentacles, but the pumps and valves don't fit the 5 V course kit.
 - Raw brightness values make the model sensitive to shadows and room lighting; a fixed lamp and a simple black-and-white threshold in `camera_to_wekinator` would help a lot.
 - The fishing lines stretch over time and need re-tightening at the tip, so a low-stretch braided line would be better.
