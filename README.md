@@ -68,7 +68,7 @@ The brief starts from the course robot arm. We kept the control chain we had bui
 
 ## Assembly drawings
 
-We drew the whole exhibit as 15 assembly steps on four sheets: steps 1-5 are the display stand, 6-9 the robot, 10-14 the hood, and step 15 sets the camera height. Part codes on the parts list: A for acrylic, P for printed stand parts, R for the robot and T for the top. The four sheets are also in one PDF: [SPECIMEN51_assembly.pdf](images/assembly/SPECIMEN51_assembly.pdf).
+We drew the whole exhibit on four sheets: an exploded view, a parts list, and 15 assembly steps on the last two. Steps 1-5 are the display stand, 6-9 the robot, 10-14 the hood, and step 15 sets the camera height. Part codes on the parts list: A for acrylic, P for printed stand parts, R for the robot and T for the top. The four sheets are also in one PDF: [SPECIMEN51_assembly.pdf](images/assembly/SPECIMEN51_assembly.pdf).
 
 ![Exploded view](images/assembly/exploded.png)
 ![Parts and hardware](images/assembly/parts.png)
@@ -77,7 +77,48 @@ We drew the whole exhibit as 15 assembly steps on four sheets: steps 1-5 are the
 
 ## Files to print and cut
 
-Only the lid parts are in `cad/` so far. We modelled them in Onshape:
+All the parts we printed or cut are in `cad/`. The codes are the same as on the parts list above. The winding disc, pegs, hood wires and film (T2-T9) are simple shapes without files. Their sizes are on the parts list.
+
+**Robot** (`cad/robot/`, black PLA unless noted)
+
+| Code | Part | Qty | File |
+| --- | --- | --- | --- |
+| R1 | Chassis, 225 mm | 1 | [R1_chassis.stl](cad/robot/R1_chassis.stl) |
+| R2 | Tentacle stand, 30 degrees | 4 | [R2_tentacle_stand.stl](cad/robot/R2_tentacle_stand.stl) |
+| R4 | Pulley for horns with a raised hub | 8 in total | [R4_pulley.stl](cad/robot/R4_pulley.stl) |
+| R4 | Pulley for flat horns | | [R4_pulley_flat_horn.stl](cad/robot/R4_pulley_flat_horn.stl) |
+| R5 | Spine, TPU 90A (iteration 3, on the robot) | 4 | [R5_spine_TPU.stl](cad/robot/R5_spine_TPU.stl) |
+| R5 | Softer spine, TPU 90A (iteration 4) | | [R5_spine_TPU_softer.stl](cad/robot/R5_spine_TPU_softer.stl) |
+| R5 | Ribs, one set of 15 (26 to 20 mm) | 4 sets | [R5_ribs_set_of_15.stl](cad/robot/R5_ribs_set_of_15.stl) |
+| R5 | The same ribs for laser cutting, 5 sets on 3 mm sheet | | [R5_ribs_laser_3mm.dxf](cad/robot/R5_ribs_laser_3mm.dxf) |
+| R6 | Line locks, 20 on one plate (4 per tentacle) | 1 plate | [R6_line_locks_x20.stl](cad/robot/R6_line_locks_x20.stl) |
+| R6 | Tip head that clamps all four lines with one M3x6 screw (we used the line locks instead) | | [R6_tip_head.stl](cad/robot/R6_tip_head.stl) |
+
+**Display stand** (`cad/display_stand/`, black PLA and 3 mm clear acrylic)
+
+| Code | Part | Qty | File |
+| --- | --- | --- | --- |
+| A1 | Deck and top sheet, 388 mm | 2 | [A1_deck.dxf](cad/display_stand/A1_deck.dxf) |
+| A2 | Leg blade | 3 | [A2_leg_blade.dxf](cad/display_stand/A2_leg_blade.dxf) |
+| A3 | Mast plates a and b | 2 | [A3a_mast_plate.dxf](cad/display_stand/A3a_mast_plate.dxf), [A3b_mast_plate.dxf](cad/display_stand/A3b_mast_plate.dxf) |
+| A4 | Arm plate | 2 | [A4_arm_plate.dxf](cad/display_stand/A4_arm_plate.dxf) |
+| A1-A4 | All of the above on two 600 x 400 sheets (sheet 1 has one deck, so cut A1 once more) | | [laser_sheet_1.dxf](cad/display_stand/laser_sheet_1.dxf), [laser_sheet_2.dxf](cad/display_stand/laser_sheet_2.dxf) |
+| P1 | Hip node | 3 | [P1_hip_node.stl](cad/display_stand/P1_hip_node.stl) |
+| P2 | Foot | 3 | [P2_foot.stl](cad/display_stand/P2_foot.stl) |
+| P3 | Mast pedestal | 1 | [P3_mast_pedestal.stl](cad/display_stand/P3_mast_pedestal.stl) |
+| P4 | Mast spacer | 9 | [P4_mast_spacer.stl](cad/display_stand/P4_mast_spacer.stl) |
+| P5 | Mast cap | 1 | [P5_mast_cap.stl](cad/display_stand/P5_mast_cap.stl) |
+| P6 | Carriage | 1 | [P6_carriage.stl](cad/display_stand/P6_carriage.stl) |
+| P7 | Arm spacer | 2 | [P7_arm_spacer.stl](cad/display_stand/P7_arm_spacer.stl) |
+| P8 | Camera head | 1 | [P8_camera_head.stl](cad/display_stand/P8_camera_head.stl) |
+| P9 | Camera bracket | 1 | [P9_camera_bracket.stl](cad/display_stand/P9_camera_bracket.stl) |
+| P10 | Knob | 2 | [P10_knob.stl](cad/display_stand/P10_knob.stl) |
+| P11 | Small knob | 1 | [P11_knob_small.stl](cad/display_stand/P11_knob_small.stl) |
+| P12 | Centre post | 1 | [P12_centre_post.stl](cad/display_stand/P12_centre_post.stl) |
+| P14 | Robot support | 1 | [P14_robot_support.stl](cad/display_stand/P14_robot_support.stl) |
+| P15 | Robot cap | 1 | [P15_robot_cap.stl](cad/display_stand/P15_robot_cap.stl) |
+
+**Lid** (`cad/`, T1). These parts we modelled in Onshape:
 
 | Part | File |
 | --- | --- |
@@ -87,7 +128,7 @@ Only the lid parts are in `cad/` so far. We modelled them in Onshape:
 | Lid servo rail, laser-cut | [servo attachment rail.dxf](cad/servo%20attachment%20rail.dxf) |
 | Lid and servo, whole assembly | [lid motor assembly.step](cad/lid%20motor%20assembly.step) |
 
-Print settings: PLA at 0.2 mm layers, 3 walls, 15% infill, no supports. For the TPU 90A tentacle spines, dry the filament first and print slowly (max 2-2.5 mm3/s), with 4 walls and 100% infill, lying flat.
+All STL files are already turned the right way for printing. PLA at 0.2 mm layers, 3 walls, 15% infill, no supports. The ribs need 4 walls or 100% infill, and the line locks thinner layers (0.12-0.16 mm) so their small holes come out round. For the TPU 90A spines, dry the filament first and print slowly (max 2-2.5 mm3/s), with 4 walls and 100% infill, lying flat.
 
 # Mechanisms
 
@@ -95,7 +136,7 @@ Print settings: PLA at 0.2 mm layers, 3 walls, 15% infill, no supports. For the 
 
 ![A tentacle bending sideways in front of the camera mast](images/photos/pic_6.jpg)
 
-Each tentacle is a soft TPU spine with 15 hard ribs on it, 10 mm apart. The ribs get smaller towards the tip, from 26 mm across at the root to 20 mm. Four fishing lines run through holes in the ribs (top, bottom, left, right) and are clamped together at the tip with a small M3 screw. At the root, the left and right lines go round a pulley on one servo and the up and down lines round a pulley on the other. Turning a servo shortens one line and lets out the opposite one, and the tentacle curls towards the short side. With both servos moving together it can bend in any direction, which is how the relay dance draws circles. We tested one tentacle on its own before building the other three.
+Each tentacle is a soft TPU spine with 15 hard ribs on it, 10 mm apart. The ribs get smaller towards the tip, from 26 mm across at the root to 20 mm. Four fishing lines run through holes in the ribs (top, bottom, left, right), and at the tip each line is locked against the last rib with a small printed bead (more about these below). At the root, the left and right lines go round a pulley on one servo and the up and down lines round a pulley on the other. Turning a servo shortens one line and lets out the opposite one, and the tentacle curls towards the short side. With both servos moving together it can bend in any direction, which is how the relay dance draws circles. We tested one tentacle on its own before building the other three.
 
 ![One tentacle on the robot](images/photos/pic_7.jpg)
 
@@ -148,7 +189,7 @@ One classifier output with five classes, one for each shape. We picked a classif
 | Class | Shape | Dance |
 | --- | --- | --- |
 | 1 | Triangle | Up/down wave: each tentacle rises and falls a quarter beat after the one before, like a wave running round the body |
-| 2 | Square | The same wave, but left and right |
+| 2 | Square | Left/right wave: the same wave, but left and right |
 | 3 | Circle | Diagonal twitch: two opposite tentacles twitch quickly, and every 2 s the other pair takes over |
 | 4 | Long thin loop | Cross-step: one pair sways left and right in mirror while the other pair nods up and down, with a bigger nod every other bar |
 | 5 | Half circle | Relay: one tentacle at a time swings round in a circle, then hands over to the next one |
@@ -195,7 +236,7 @@ Opens the webcam at 1280x720, cuts out the round middle part and sends the 44x44
 
 ## `Processing_osc_to_arduino/osc_to_arduino.pde`
 
-Listens for `/wek/outputs` on port 12000 and rounds the value to a class from 1 to 5. A class has to hold for 200 ms before it is sent, which filters out one-frame flickers. It sends the class as a line of text (`C3`) when it changes and again every second in case the Arduino has restarted, and the Arduino answers `ACK 3`. The window has four boxes: what Wekinator sends, the stable class, the class that was sent, and the class the Arduino confirmed. The sketch finds the Arduino by part of the port name (`PORT_HINT = "usbmodem"` on a Mac, something like `"COM3"` on Windows) and reconnects by itself if the cable comes out.
+Listens for `/wek/outputs` on port 12000 and rounds the value to a class from 1 to 5. A class has to hold for 200 ms before it is sent, which filters out one-frame flickers. It sends the class as a line of text (`C3`) when it changes and again every second in case the Arduino has restarted, and the Arduino answers `ACK 3`. The window has four boxes: what Wekinator sends, the stable class, the class that was sent, and the class the Arduino confirmed. The sketch finds the Arduino by part of the port name (`PORT_HINT = "usbmodem"` on a Mac, something like `"COM3"` on Windows). If it can't find or open the port, or a read or write on it fails, it tries again every 2 s.
 
 ## `arduino/tentacle_show.ino`
 
@@ -209,7 +250,7 @@ The Arduino goes round three phases:
 
 Every phase change sends a short blue light along the LED strip. A class that comes in after the pick waits for the next round; this way the closing hood can't change the dance. Over serial the Arduino prints `READY` at start, `phase:n` at each phase change, `animation:n` when it takes the class, `class:n` when a new class comes in and `ACK n` for every message. You can also type a single digit into the Serial Monitor, which is handy for testing without Wekinator.
 
-Only this sketch is needed to run the project. `arduino/tentacle_animations_new_copy_20261111020022.ino` is an earlier version we kept for reference. Every phase in it lasts 1 s, the class is used the moment it arrives, the lid is on D10 and it talks at 9600 baud, which means it can't talk to `osc_to_arduino`.
+Only this sketch is needed to run the project.
 
 ## How to run (macOS)
 
@@ -267,7 +308,7 @@ flowchart TB
 | LED strip and a servo on the same pin | Both on D11 in an early sketch | LED strip moved to D2 |
 | Tentacle bent when it should be straight | Horn one tooth off | Turn the horn by one tooth so the tentacle is straight at 90 |
 | "Sent" box says "serial closed" | Serial Monitor or servo test page has the port open | Close them, or set `PORT_HINT` |
-| No `ACK` | Wrong sketch on the board (servo test or the old 9600 baud one) | Upload `tentacle_show.ino` |
+| No `ACK` | Wrong sketch on the board, for example the servo test | Upload `tentacle_show.ino` |
 | Prediction jumps between two classes | Shapes too alike, or too few examples | 200 ms filter in `osc_to_arduino`; record more examples |
 | Dance doesn't match the shape on the disc | Shape changed after the class was taken | Wait one round |
 
